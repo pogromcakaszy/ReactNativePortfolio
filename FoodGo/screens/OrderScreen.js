@@ -2,14 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 
-export default function MenuScreen({ navigation }) {
+export default function OrderScreen({ navigation }) {
   return (
       <View style={styles.container}>
         <Button
         title='Navi to Home '
         onPress={() => navigation.navigate("Home")}
         />
-        <Text>Menu Screen </Text>
+        <Text>oirder Screen </Text>
         <StatusBar style="auto" />
       </View>
   );

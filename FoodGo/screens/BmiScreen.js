@@ -17,7 +17,7 @@ export default function BmiScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#555555',
     alignItems: 'center',
     justifyContent: 'center',
   },
