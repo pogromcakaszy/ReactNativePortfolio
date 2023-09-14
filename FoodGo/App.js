@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import HomeScreen from "./screens/HomeScreen";
+import BmiScreen from "./screens/BmiScreen";
+import MenuScreen from "./screens/MenuScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>FoodGo</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      
+      <Stack.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+      >
+        <Stack.Screen
+          name = "Home"
+          component={HomeScreen}
+          options={{title: "home screen"}}
+        />
+        <Stack.Screen
+          name = "Bmi"
+          component={BmiScreen}
+          options={{title: "bmi screen"}}
+        />
+        <Stack.Screen
+          name = "Menu"
+          component={MenuScreen}
+          options={{title: "menu screen"}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
