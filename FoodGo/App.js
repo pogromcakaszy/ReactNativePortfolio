@@ -4,14 +4,35 @@ import MenuScreen from "./screens/MenuScreen";
 import OrderScreen from "./screens/OrderScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { useCallback, View } from "react";
 
 const Stack = createNativeStackNavigator();
 
+//SplashScreen.preventAutoHideAsync();
+
 
 export default function App() {
+
+  const [isLoaded] = useFonts({
+    'mtt-black': require('./assets/fonts/Montserrat-Black.ttf'),
+    'mtt-regular': require('./assets/fonts/Montserrat-Regular.ttf'),
+    'mtt-bold': require('./assets/fonts/Montserrat-Bold.ttf'),
+  });
+
+  const handleOnLayout = useCallback(async () => {
+    if (isLoaded){
+      await SplashScreen.hideAsync();
+    }
+  }, [isLoaded]);
+
+  if(!isLoaded){
+    return null;
+  }
+  
   return (
     <NavigationContainer>
-      
       <Stack.Navigator
       screenOptions={{
         headerShown: false
