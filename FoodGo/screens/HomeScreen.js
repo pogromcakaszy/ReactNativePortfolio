@@ -1,11 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image, SafeAreaView } from 'react-native';
 import React from 'react';
 
 export default function HomeScreen({ navigation }) {
   return (
+    <SafeAreaView style={styles.container}>
       <View style={styles.container}>
+        <Image
+            style={styles.hugeLogo}
+            source={require('./../assets/img/pizzaLogo.png')}
+        />
         <View>
+            
         <TouchableOpacity
         style={styles.buttonNavigateOrder}
         title='Navi to Order '
@@ -33,8 +39,9 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
 
         </View>
-        <StatusBar style="auto" />
+        <StatusBar style="inverted" />
       </View>
+    </SafeAreaView>
   );
 }
 
@@ -50,7 +57,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    elevation: 3,
+    elevation: 10,
+    margin: 10,
     backgroundColor: '#6E5ADF',
     borderRadius: 30,
   },
@@ -59,7 +67,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    elevation: 3,
+    elevation: 10,
+    margin: 10,
     backgroundColor: '#009CDF',
     borderRadius: 30,
   },
@@ -68,7 +77,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    elevation: 3,
+    elevation: 10,
+    margin: 10,
     backgroundColor: '#222222',
     borderRadius: 30,
   },
@@ -79,5 +89,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'mtt-regular',
     textAlign: 'center',
+  },
+  hugeLogo: {
+    width: 400,
+    height: 200,
+    alignItems: 'center',
+    position: 'absolute',
+    alignSelf: 'center',
+    top: 0,
   },
 });
