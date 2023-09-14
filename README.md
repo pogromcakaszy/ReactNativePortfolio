@@ -4,7 +4,7 @@ Heey, that's my portfolio (Just in case, if you will be interested what I actual
 ============================
 
     My main skills
-HTML | CSS | JS | REACT
+HTML | CSS | JS | REACT-NATIVE
 
 ============================
 
