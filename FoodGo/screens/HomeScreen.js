@@ -10,8 +10,8 @@ export default function HomeScreen({ navigation }) {
             style={styles.hugeLogo}
             source={require('./../assets/img/pizzaLogo.png')}
         />
-        <View>
-            
+      <View style={styles.content}>
+        <View style={styles.backgroundSquare}>
         <TouchableOpacity
         style={styles.buttonNavigateOrder}
         title='Navi to Order '
@@ -37,8 +37,8 @@ export default function HomeScreen({ navigation }) {
         >
             <Text style={styles.buttonHomeText}>Bmi</Text>
         </TouchableOpacity>
-
         </View>
+      </View>
         <StatusBar style="inverted" />
       </View>
     </SafeAreaView>
@@ -51,6 +51,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#111111',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingBottom: 50,
+  },
+  backgroundSquare: {
+    backgroundColor: '#212121',
+    padding: 20,
+    margin: 20,
+    borderRadius: 20,
+    width: 200,
   },
   buttonNavigateOrder: {
     alignItems: 'center',
@@ -79,7 +92,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     elevation: 10,
     margin: 10,
-    backgroundColor: '#222222',
+    backgroundColor: '#2F2F2F',
     borderRadius: 30,
   },
   buttonHomeText: {
