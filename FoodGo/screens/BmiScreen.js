@@ -11,61 +11,61 @@ const DismissKeyboard = ({children}) => (
 export default function BmiScreen({ navigation }) {
 
   const [weight, setWeight] = useState('');
-    const [height, setHeight] = useState('');
-    const [bmiResult, setBmiResult] = useState('');
+  const [height, setHeight] = useState('');
+  const [bmiResult, setBmiResult] = useState('');
 
-    const handleWeightChange = (text) =>{
-      setWeight(text);
+  const handleWeightChange = (text) =>{
+    setWeight(text);
+  }
+
+  const handleHeightChange = (text) =>{
+    setHeight(text);
+  }
+
+  const bmiCalc = () =>{
+  const weightValue = parseFloat(weight);
+  const heightValue = parseFloat(height);
+
+  if(!isNaN(weightValue) && !isNaN(heightValue)){
+    
+  const bmiResult = ((weightValue)/Math.pow(heightValue,2))*10000
+  const finalRes = bmiResult.toFixed(1);
+  setBmiResult(finalRes);
+  checkBmi(finalRes);
+  }else{
+    alert('Podaj poprawne dane');
     }
+  }
 
-    const handleHeightChange = (text) =>{
-      setHeight(text);
-    }
-
-    const bmiCalc = () =>{
-      const weightValue = parseFloat(weight);
-      const heightValue = parseFloat(height);
-
-      if(!isNaN(weightValue) && !isNaN(heightValue)){
-          const bmiResult = ((weightValue)/Math.pow(heightValue,2))*10000
-          const finalRes = bmiResult.toFixed(1);
-          setBmiResult(finalRes);
-          checkBmi(finalRes);
-        }
-      else{
-        alert('Podaj poprawne dane');
-      }
-    }
-
-    function checkBmi(finalRes){
-      if(finalRes > 18.5 && finalRes < 24.99){
-        Alert.alert('Twoje BMI',"twoje bmi jest prawidlowe");
-      }else if(finalRes < 16){
-        Alert.alert('Twoje BMI', "wygłodzenie");
-      }else if(finalRes > 16 && finalRes < 16.99){
-        Alert.alert('Twoje BMI',"wychudzenie");
-      }else if(finalRes > 17 && finalRes < 18.49){
-        Alert.alert('Twoje BMI',"niedowaga");
-      }else if(finalRes > 25 && finalRes < 29.99){
+  function checkBmi(finalRes){
+    if(finalRes > 18.5 && finalRes < 24.99){
+      Alert.alert('Twoje BMI',"twoje bmi jest prawidlowe");
+    }else if(finalRes < 16){
+      Alert.alert('Twoje BMI', "wygłodzenie");
+    }else if(finalRes > 16 && finalRes < 16.99){
+      Alert.alert('Twoje BMI',"wychudzenie");
+    }else if(finalRes > 17 && finalRes < 18.49){
+      Alert.alert('Twoje BMI',"niedowaga");
+    }else if(finalRes > 25 && finalRes < 29.99){
         Alert.alert('Twoje BMI',"nadwaga");
-      }else if(finalRes > 30 && finalRes < 34.99){
-        Alert.alert('Twoje BMI'," I stopień otyłości");
-      }else if(finalRes > 35 && finalRes < 39.99){
-        Alert.alert('Twoje BMI'," II stopień otyłości");
-      }else{
-        Alert.alert("grubas");
-      }
+    }else if(finalRes > 30 && finalRes < 34.99){
+      Alert.alert('Twoje BMI'," I stopień otyłości");
+    }else if(finalRes > 35 && finalRes < 39.99){
+      Alert.alert('Twoje BMI'," II stopień otyłości");
+    }else{
+      Alert.alert("grubas");
+    }
     }
 
-    const saveData = () =>{
-      console.log(height);
-      console.log(weight);
-    }
+  const saveData = () =>{
+    console.log(height);
+    console.log(weight);
+  }
 
-    functionCombined = () =>{
-      saveData()
-      bmiCalc()
-    }
+  functionCombined = () =>{
+    saveData()
+    bmiCalc()
+  }
 
 
   return (
