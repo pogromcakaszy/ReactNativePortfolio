@@ -8,7 +8,7 @@ const DismissKeyboard = ({children}) => (
   </TouchableWithoutFeedback>
 );
 
-export default function BmiScreen({ navigation }) {
+export default function BmiScreen({ }) {
 
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
