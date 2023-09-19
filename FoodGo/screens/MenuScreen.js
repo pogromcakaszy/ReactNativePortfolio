@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TouchableOpacity, View, Image, SafeAreaView, ScrollView } from 'react-native';
 
-
 export default function MenuScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
@@ -13,8 +12,8 @@ export default function MenuScreen({ navigation }) {
           style={styles.hugeLogo}
           source={require('./../assets/img/pizzaLogo.png')}
         />
-      
         <View style={styles.content}>
+          {/* This page is used to display every kind of the meals, in future updates you will be able to check for more details. */}
           <View style={styles.gridContainer}>
             <Text style={styles.chooseDietText}>Choose Diet</Text>
             <View style={styles.gridRow}>

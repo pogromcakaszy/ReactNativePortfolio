@@ -10,6 +10,7 @@ import { useCallback, View } from "react";
 
 const Stack = createNativeStackNavigator();
 
+
 //SplashScreen.preventAutoHideAsync();
 
 

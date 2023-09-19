@@ -5,6 +5,7 @@ import React from 'react';
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
+      {/* This is a average menu used to display every kind of events. */}
       <View style={styles.container}>
         <Image
             style={styles.hugeLogo}
