@@ -23,12 +23,12 @@ Heey, that's my portfolio (Just in case, if you will be interested what I actual
 
 ![foodgomenu](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/c6d014a4-94d5-444a-96ba-563583ad0c2a)
 
-                                 Even working bmi calculator 
+                      Even working bmi calculator 
 
 ![bmiscreen](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/49119365-79c7-4c81-bdc8-bb8cb87e50aa)
 
 
-                                 BIG MEAL MENU INCLUDED! WOOO 
+                      BIG MEAL MENU INCLUDED! WOOO 
 
 
 
