@@ -16,8 +16,7 @@ Heey, that's my portfolio (Just in case, if you will be interested what I actual
 ======================================
 
 
-ACTUAL PROJECT
-CATERING APP - FOOD GO
+                      ACTUAL PROJECT CATERING APP - FOOD GO ( STILL UNDER DEVELOPEMENT )
 ![pizzaLogo](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/b1789661-0a43-41d7-b677-223eedd478f7)
 
                       WORKING MENU ( W O W ) :D
