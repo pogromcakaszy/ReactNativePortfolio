@@ -29,7 +29,7 @@ CATERING APP - FOOD GO
 ![bmiscreen](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/49119365-79c7-4c81-bdc8-bb8cb87e50aa)
 
 
-                                 BIG MEAL MENU
+                                 BIG MEAL MENU INCLUDED! WOOO 
 
 
 
