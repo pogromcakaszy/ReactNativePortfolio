@@ -55,7 +55,7 @@ export default function BmiScreen({ }) {
     }else{
       Alert.alert("grubas");
     }
-    }
+  }
 
   const saveData = () =>{
     console.log(height);
@@ -88,6 +88,7 @@ export default function BmiScreen({ }) {
                 keyboardType='numeric'
                 placeholder='Waga'
                 keyboardAppearance='dark'
+                placeholderTextColor={'white'}
                 onChangeText={handleWeightChange}
                 value={weight}
                 />
@@ -104,13 +105,47 @@ export default function BmiScreen({ }) {
                 style={styles.textInput}
                 keyboardType='numeric'
                 placeholder='Height'
+                placeholderTextColor={'white'}
                 keyboardAppearance='dark'
                 onChangeText={handleHeightChange}
                 value={height}
             />
+
           </View>
+            <Text style={styles.textResultBmi}> Twoje BMI {bmiResult}</Text>
         </View>
       </View>
+      <View >
+        <Text style={styles.textBmiHeader}>
+          Zakresy wartości BMI:
+        </Text>
+        <Text style={styles.textBmiValues}>
+          mniej niż 16 - wygłodzenie
+        </Text>
+        <Text style={styles.textBmiValues}>
+          16 - 16.99 - wychudzenie
+        </Text>
+        <Text style={styles.textBmiValues}>
+          17 - 18.49 - niedowaga
+        </Text>
+        <Text style={styles.textBmiValues}>
+          18.5 - 24.99 - wartość prawidłowa
+        </Text>
+        <Text style={styles.textBmiValues}>
+          25 - 29.99 - nadwaga
+        </Text>
+        <Text style={styles.textBmiValues}>
+          30 - 34.99 - I stopień otyłości
+        </Text>
+        <Text style={styles.textBmiValues}>
+          35 - 39.99 - II stopień otyłości
+        </Text>
+        <Text style={styles.textBmiValues}>
+          powyżej 40 - otyłość skrajna
+        </Text>
+
+      </View>
+      
 
       <View style={styles.content}>
         <View style={styles.backgroundSquare}>
@@ -145,15 +180,15 @@ const styles = StyleSheet.create({
   },
   backgroundSquare: {
     backgroundColor: '#212121',
-    padding: 20,
-    margin: 20,
+    padding: 10,
+    margin: 10,
     borderRadius: 20,
-    width: 300,
+    width: 250,
   },
   backgroundSquareTop: {
     flexDirection: 'row',
     backgroundColor: '#212121',
-    margin: 20,
+    margin: 25,
     borderRadius: 20,
   },
   buttonNavigateBmi: {
@@ -182,6 +217,8 @@ const styles = StyleSheet.create({
   },
   textInput:{
     fontSize: 30, 
+    fontFamily: 'mtt-regular',
+    color: 'white',
   },
   gridContainer: {
     width: '100%',
@@ -190,5 +227,26 @@ const styles = StyleSheet.create({
   gridRow: {
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  textBmiValues: {
+    color: 'white',
+    fontFamily: 'mtt-regular',
+    fontSize: 15,
+    marginLeft: 50,
+  },
+  textBmiHeader: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 20,
+    fontFamily: 'mtt-bold',
+    letterSpacing: 5,
+  },
+  textResultBmi: {
+    color: 'white',
+    fontFamily: 'mtt-bold',
+    fontSize: 15,
+    textAlign: 'center',
+    letterSpacing: 5,
+    margin: 20,
   },
 });
