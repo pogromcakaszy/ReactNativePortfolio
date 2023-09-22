@@ -3,15 +3,17 @@ import { StatusBar } from 'expo-status-bar';
 import { 
     StyleSheet, 
     Text, 
-    TouchableOpacity, 
     View, 
     Image, 
     SafeAreaView,
     TextInput,
     Keyboard, 
-    TouchableWithoutFeedback, 
+    TouchableWithoutFeedback,
+    Pressable, 
+    Alert,
   } from 'react-native';
 import CustomInput from "../../components/CustomInput";
+import CustomButton from "../../components/CustomButton";
 
 const DismissKeyboard = ({children}) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -24,6 +26,10 @@ const SignInScreen = ({navigation}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const signInPressed = () => {
+        Alert.alert(username);
+        Alert.alert(password);
+    }
 
     return (
         <DismissKeyboard>
@@ -42,17 +48,10 @@ const SignInScreen = ({navigation}) => {
             <CustomInput placeholder={'Login'} value={username} setValue={setUsername}/>
             <CustomInput placeholder={'Password'} value={password} setValue={setPassword} secureTextEntry={true}/>
             
+            <CustomButton text="sign" onPress={signInPressed} />
             </View>
-            <TouchableOpacity
-            style={styles.buttonNavigateBmi}
-            title='Navi to Home '
-            Text='Login'
-            onPress={() => navigation.navigate("Home")}
-            >
-                <Text style={styles.buttonHomeText}>Login</Text>
-            </TouchableOpacity>
+            
           </View>
-          
             <StatusBar style="inverted" />
           </View>
         </SafeAreaView>
@@ -71,15 +70,15 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-end',
-        paddingBottom: 50,
+        //paddingBottom: 60,
       },
       backgroundSquare: {
         backgroundColor: '#212121',
         margin: 20,
         borderRadius: 20,
         padding: '20%',
-        width: '80%',
-        height: '50%',
+        width: '70%',
+        height: '70%',
       },
       buttonNavigateBmi: {
         alignItems: 'center',

@@ -22,13 +22,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         
         alignItems: 'center',
-
-        borderRadius: 20,
-        marginVertical: 5,
+        borderRadius: 30,
+        marginVertical: 15,
         borderWidth: 2,
-
+        padding: 15,
         width: 200,
-        height: '20%',
+        //height: '20%',
 
         justifyContent: 'center',
       },
@@ -36,7 +35,6 @@ const styles = StyleSheet.create({
         fontSize: 20, 
         fontFamily: 'mtt-regular',
         color: 'black',
-        
       },
 });
 
