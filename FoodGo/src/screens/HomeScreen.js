@@ -1,15 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View, Image, SafeAreaView } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  TouchableOpacity, 
+  View, 
+  Image, 
+  SafeAreaView 
+} from 'react-native';
 import React from 'react';
 
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
-      {/* This is a average menu used to display every kind of events. */}
+      {/* This is a average menu used to display every kind of events.  ./../assets/img/pizzaLogo.png */}
       <View style={styles.container}>
         <Image
             style={styles.hugeLogo}
-            source={require('./../assets/img/pizzaLogo.png')}
+            source={require('../../assets/img/pizzaLogo.png')}
         />
       <View style={styles.content}>
         <View style={styles.backgroundSquare}>

@@ -1,5 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View, Image, SafeAreaView, ScrollView } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  TouchableOpacity, 
+  View, 
+  Image, 
+  SafeAreaView, 
+  ScrollView 
+} from 'react-native';
 
 export default function MenuScreen({ navigation }) {
   return (
@@ -10,7 +18,7 @@ export default function MenuScreen({ navigation }) {
       <View style={styles.container}>
         <Image
           style={styles.hugeLogo}
-          source={require('./../assets/img/pizzaLogo.png')}
+          source={require('../../assets/img/pizzaLogo.png')}
         />
         <View style={styles.content}>
           {/* This page is used to display every kind of the meals, in future updates you will be able to check for more details. */}
@@ -22,7 +30,7 @@ export default function MenuScreen({ navigation }) {
                   <Text style={styles.squareText}> SPORT </Text>
                     <Image
                     style={styles.productMenuLogo}
-                    source={require('./../assets/img/sportsw.png')}
+                    source={require('../../assets/img/sportsw.png')}
                   />
                     {/* Pierwszy kwadrat w pierwszym rzędzie */}
                 </View>
@@ -32,7 +40,7 @@ export default function MenuScreen({ navigation }) {
                   <Text style={styles.squareText}> KETO </Text>
                     <Image
                     style={styles.productMenuLogo}
-                    source={require('./../assets/img/ketow.png')}
+                    source={require('../../assets/img/ketow.png')}
                     />
                       {/* Drugi kwadrat w pierwszym rzędzie */}
                 </View>
@@ -44,7 +52,7 @@ export default function MenuScreen({ navigation }) {
                   <Text style={styles.squareText}> FISH </Text>
                     <Image
                     style={styles.productMenuLogo}
-                    source={require('./../assets/img/fishw.png')}
+                    source={require('../../assets/img/fishw.png')}
                   />
                     {/* Pierwszy kwadrat w drugim rzędzie */}
                 </View>
@@ -54,7 +62,7 @@ export default function MenuScreen({ navigation }) {
                   <Text style={styles.squareText}> FRUIT </Text>
                     <Image
                     style={styles.productMenuLogo}
-                    source={require('./../assets/img/antipastow.png')}
+                    source={require('../../assets/img/antipastow.png')}
                   />
                     {/* Drugi kwadrat w drugim rzędzie */}
                 </View>
@@ -66,7 +74,7 @@ export default function MenuScreen({ navigation }) {
                   <Text style={styles.squareText} numberOfLines={2}> GLUTEN-FREE </Text>
                     <Image
                     style={styles.productMenuLogo}
-                    source={require('./../assets/img/gluten-freew.png')}
+                    source={require('../../assets/img/gluten-freew.png')}
                     />
                       {/* Pierwszy kwadrat w trzecim rzędzie */}
                 </View>
@@ -76,7 +84,7 @@ export default function MenuScreen({ navigation }) {
               <Text style={styles.squareText} numberOfLines={2}> PROTEIN </Text>
                 <Image
                   style={styles.productMenuLogo}
-                  source={require('./../assets/img/proteinw.png')}
+                  source={require('../../assets/img/proteinw.png')}
                 />
                 {/* Drugi kwadrat w trzecim rzędzie */}
               </View>
@@ -88,7 +96,7 @@ export default function MenuScreen({ navigation }) {
                 <Text style={styles.squareText}> BULK </Text>
                 <Image
                   style={styles.productMenuLogo}
-                  source={require('./../assets/img/weight-gainw.png')}
+                  source={require('../../assets/img/weight-gainw.png')}
                 />
                 {/* Pierwszy kwadrat w czwartym rzędzie */}
               </View>
@@ -98,7 +106,7 @@ export default function MenuScreen({ navigation }) {
                   <Text style={styles.squareText}> VEGE </Text>
                     <Image
                       style={styles.productMenuLogo}
-                      source={require('./../assets/img/vegetablew.png')}
+                      source={require('../../assets/img/vegetablew.png')}
                     />
                       {/* Drugi kwadrat w czwartym rzędzie */}
                 </View>
@@ -110,7 +118,7 @@ export default function MenuScreen({ navigation }) {
                   <Text style={styles.squareText}> ENERGY </Text>
                     <Image
                       style={styles.productMenuLogo}
-                      source={require('./../assets/img/thunderboltw.png')}
+                      source={require('../../assets/img/thunderboltw.png')}
                     />
                       {/* Pierwszy kwadrat w piątym rzędzie */}
               </View>
@@ -120,7 +128,7 @@ export default function MenuScreen({ navigation }) {
                   <Text style={styles.squareText}> DIET </Text>
                     <Image
                       style={styles.productMenuLogo}
-                      source={require('./../assets/img/dietw.png')}
+                      source={require('../../assets/img/dietw.png')}
                     />
                       {/* Drugi kwadrat w piątym rzędzie */}
               </View>

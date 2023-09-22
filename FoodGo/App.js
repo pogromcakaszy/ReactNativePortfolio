@@ -1,7 +1,8 @@
-import HomeScreen from "./screens/HomeScreen";
-import BmiScreen from "./screens/BmiScreen";
-import MenuScreen from "./screens/MenuScreen";
-import OrderScreen from "./screens/OrderScreen";
+import HomeScreen from "./src/screens/HomeScreen";
+import BmiScreen from "./src/screens/BmiScreen";
+import MenuScreen from "./src/screens/MenuScreen";
+import OrderScreen from "./src/screens/OrderScreen";
+import SignInScreen from "./src/screens/signInScreen/SignInScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from 'expo-font';
@@ -33,12 +34,19 @@ export default function App() {
   }
   
   return (
+    
     <NavigationContainer>
       <Stack.Navigator
       screenOptions={{
         headerShown: false
       }}
       >
+        
+        <Stack.Screen
+          name= "SignIn"
+          component={SignInScreen}
+          options={{title: "sign in"}}
+        />
         <Stack.Screen
           name = "Home"
           component={HomeScreen}

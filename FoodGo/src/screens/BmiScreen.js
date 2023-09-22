@@ -1,5 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View, Image, SafeAreaView,TouchableWithoutFeedback, TextInput, Keyboard, Alert } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image, 
+  SafeAreaView,
+  TouchableWithoutFeedback, 
+  TextInput, 
+  Keyboard, 
+  Alert 
+} from 'react-native';
 import React, {useState} from 'react';
 
 const DismissKeyboard = ({children}) => (
@@ -79,7 +90,7 @@ export default function BmiScreen({ }) {
           
                 <Image
                 style={styles.productMenuLogo}
-                source={require('./../assets/img/weightw.png')}
+                source={require('../../assets/img/weightw.png')}
                 />
                     {/* Pierwszy kwadrat w pierwszym rzędzie */}
               
@@ -97,7 +108,7 @@ export default function BmiScreen({ }) {
             
                 <Image
                 style={styles.productMenuLogo}
-                source={require('./../assets/img/heightw.png')}
+                source={require('../../assets/img/heightw.png')}
                 />
                     {/* Pierwszy kwadrat w drugim rzędzie */}
             
