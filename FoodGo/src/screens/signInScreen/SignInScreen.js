@@ -14,6 +14,10 @@ import {
   } from 'react-native';
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+import { FIREBASE_AUTH } from "../../../FirebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
 
 const DismissKeyboard = ({children}) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -23,14 +27,41 @@ const DismissKeyboard = ({children}) => (
 
 const SignInScreen = ({navigation}) => {
 
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    const signInPressed = () => {
-        Alert.alert(username);
-        Alert.alert(password);
+    const auth = FIREBASE_AUTH;
+
+    const signInPressed = async () => {
+        setLoading(true);
+        try{
+          const response = await signInWithEmailAndPassword(auth, email, password);
+          console.log(response)
+          navigation.navigate("Home");
+        }catch (error){
+          console.log(error);
+          alert('We cannot login to your account ' + error.message);
+        } finally {
+          setLoading(false);
+        }
     }
 
+    const signUpPressed = async () => {
+      setLoading(true);
+      try{
+        const response = await createUserWithEmailAndPassword(auth, email, password);
+        console.log(response)
+        alert('Register sucesfully');
+        
+      }catch (error){
+        console.log(error);
+        alert('We cannot create your account' + error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
     return (
         <DismissKeyboard>
         <SafeAreaView style={styles.container}>
@@ -45,12 +76,13 @@ const SignInScreen = ({navigation}) => {
           <View style={styles.content}>
             <View style={styles.backgroundSquare}>
             
-            <CustomInput placeholder={'Login'} value={username} setValue={setUsername}/>
+            <CustomInput placeholder={'Email'} value={email} setValue={setEmail}/>
             <CustomInput placeholder={'Password'} value={password} setValue={setPassword} secureTextEntry={true}/>
             
-            <CustomButton text="sign" onPress={signInPressed} />
+            <CustomButton text="Sign in" onPress={signInPressed} />
+            <CustomButton text="Sign up" onPress={signUpPressed} />
+
             </View>
-            
           </View>
             <StatusBar style="inverted" />
           </View>
