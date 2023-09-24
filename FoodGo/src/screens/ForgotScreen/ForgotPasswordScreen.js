@@ -16,8 +16,7 @@ import {
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import { FIREBASE_AUTH } from "../../../FirebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { ActionCodeOperation, sendPasswordResetEmail } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 
 const DismissKeyboard = ({children}) => (
@@ -26,52 +25,28 @@ const DismissKeyboard = ({children}) => (
     </TouchableWithoutFeedback>
 );
 
-const SignInScreen = ({navigation}) => {
+const ForgotPasswordScreen = ({navigation, initialRouteName}) => {
 
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-
     const auth = FIREBASE_AUTH;
 
-    const signInPressed = async () => {
+    
+
+    const forgetPasswordPressed = async () => {
         setLoading(true);
         try{
-          const response = await signInWithEmailAndPassword(auth, email, password);
+          const response = await sendPasswordResetEmail(auth, email);
           console.log(response)
-          navigation.navigate("Home");
+          alert(' Email sent ');
         }catch (error){
           console.log(error);
-          alert('We cannot login to your account ' + error.message);
+          alert('error ' + error.message);
         } finally {
           setLoading(false);
         }
     }
 
-    /*
-      const signUpPressed = async () => {
-      setLoading(true);
-      try{
-        const response = await createUserWithEmailAndPassword(auth, email, password);
-        console.log(response)
-        alert('Register sucesfully');
-        
-      }catch (error){
-        console.log(error);
-        alert('We cannot create your account' + error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    */
-    const signUpPressed = async () => {
-      navigation.navigate("SignUp");
-    }
-
-    const forgotPasswordPressed = async () => {
-      navigation.navigate("ForgotPassword");
-    }
-    
     return (
         <DismissKeyboard>
         <SafeAreaView style={styles.container}>
@@ -86,15 +61,10 @@ const SignInScreen = ({navigation}) => {
             <View style={styles.backgroundSquare}>
             
             <CustomInput placeholder={'Email'} value={email} setValue={setEmail}/>
-            <CustomInput placeholder={'Password'} value={password} setValue={setPassword} secureTextEntry={true}/>
-            
-            <CustomButton text="Sign In" onPress={signInPressed} color='#6E5ADF' />
 
-            <CustomButton text="Forgot password?" onPress={forgotPasswordPressed}/>
+            <CustomButton text="Forgot password?" onPress={forgetPasswordPressed}/>
 
-            <Text style={styles.textInput}> Don't have an account?</Text>
-            <Text style={styles.textInput}> Just sign up!</Text>
-            <CustomButton text="Sign Up" onPress={signUpPressed} color='#2F2F2F' />
+            <Text style={styles.textInput}> Input your email to reset password </Text>
 
             </View>
           </View>
@@ -122,9 +92,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#212121',
         margin: 20,
         borderRadius: 20,
+        //marginTop: 400,
         padding: '10%',
         width: '90%',
-        height: '80%',
+        height: '40%',
       },
       buttonNavigateBmi: {
         alignItems: 'center',
@@ -145,8 +116,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
       },
       hugeLogo: {
-        width: 200,
-        height: 100,
+        width: 400,
+        height: 200,
         alignItems: 'center',
         position: 'absolute',
         alignSelf: 'center',
@@ -161,4 +132,4 @@ const styles = StyleSheet.create({
       },
 });
 
-export default SignInScreen
+export default ForgotPasswordScreen

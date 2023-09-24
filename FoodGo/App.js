@@ -8,6 +8,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, View } from "react";
+import RegisterScreen from "./src/screens/RegisterScreen";
+import ForgotPasswordScreen from "./src/screens/ForgotScreen/ForgotPasswordScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -56,6 +58,16 @@ export default function App() {
           name = "Bmi"
           component={BmiScreen}
           options={{title: "bmi screen"}}
+        />
+        <Stack.Screen
+          name = "SignUp"
+          component={RegisterScreen}
+          options={{title: "register screen"}}
+        />
+        <Stack.Screen
+          name = "ForgotPassword"
+          component={ForgotPasswordScreen}
+          options={{title: "fogrot password"}}
         />
         <Stack.Screen
           name = "Menu"

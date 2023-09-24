@@ -10,11 +10,12 @@ import {
     Keyboard, 
     TouchableWithoutFeedback,
     Alert,
+    Touchable,
+    TouchableOpacity,
   } from 'react-native';
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import { FIREBASE_AUTH } from "../../../FirebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 
@@ -24,7 +25,7 @@ const DismissKeyboard = ({children}) => (
     </TouchableWithoutFeedback>
 );
 
-const SignInScreen = ({navigation}) => {
+const RegisterScreen = ({navigation, initialRouteName}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -32,40 +33,24 @@ const SignInScreen = ({navigation}) => {
 
     const auth = FIREBASE_AUTH;
 
-    const signInPressed = async () => {
+    const signUpPressed = async () => {
         setLoading(true);
         try{
-          const response = await signInWithEmailAndPassword(auth, email, password);
+          const response = await createUserWithEmailAndPassword(auth, email, password);
           console.log(response)
-          navigation.navigate("Home");
+          alert('Register sucesfully');
         }catch (error){
           console.log(error);
-          alert('We cannot login to your account ' + error.message);
+          alert('We cannot create your account' + error.message);
         } finally {
           setLoading(false);
         }
     }
 
-    const signUpPressed = async () => {
-      setLoading(true);
-      try{
-        const response = await createUserWithEmailAndPassword(auth, email, password);
-        console.log(response)
-        alert('Register sucesfully');
-        
-      }catch (error){
-        console.log(error);
-        alert('We cannot create your account' + error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    
     return (
         <DismissKeyboard>
         <SafeAreaView style={styles.container}>
-          {/* This is a average menu used to display every kind of events.  ./../assets/img/pizzaLogo.png */}
-          
+          {/* This is a average menu used to display every kind of events.*/}
           <View style={styles.container}>
           <Image
             style={styles.hugeLogo}
@@ -77,9 +62,10 @@ const SignInScreen = ({navigation}) => {
             
             <CustomInput placeholder={'Email'} value={email} setValue={setEmail}/>
             <CustomInput placeholder={'Password'} value={password} setValue={setPassword} secureTextEntry={true}/>
-            
-            <CustomButton text="Sign in" onPress={signInPressed} />
-            <CustomButton text="Sign up" onPress={signUpPressed} />
+
+            <CustomButton text="Sign Up" onPress={signUpPressed} color='#2F2F2F' />
+            <Text style={styles.textInput}> Password should contain </Text>
+            <Text style={styles.textInput}> at least 6 letters to create account</Text>
 
             </View>
           </View>
@@ -107,9 +93,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#212121',
         margin: 20,
         borderRadius: 20,
-        padding: '20%',
-        width: '70%',
-        height: '70%',
+        padding: '10%',
+        width: '90%',
+        height: '80%',
       },
       buttonNavigateBmi: {
         alignItems: 'center',
@@ -130,13 +116,20 @@ const styles = StyleSheet.create({
         textAlign: 'center',
       },
       hugeLogo: {
-        width: 400,
-        height: 200,
+        width: 200,
+        height: 100,
         alignItems: 'center',
         position: 'absolute',
         alignSelf: 'center',
         top: 0,
       },
+      textInput:{
+        fontSize: 15, 
+        fontFamily: 'mtt-regular',
+        color: 'white',
+        justifyContent: 'center',
+        textAlign: 'center',
+      },
 });
 
-export default SignInScreen
+export default RegisterScreen
