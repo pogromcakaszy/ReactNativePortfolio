@@ -10,8 +10,6 @@ import {
     Keyboard, 
     TouchableWithoutFeedback,
     Alert,
-    Touchable,
-    TouchableOpacity,
   } from 'react-native';
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
@@ -66,7 +64,8 @@ const SignInScreen = ({navigation}) => {
     return (
         <DismissKeyboard>
         <SafeAreaView style={styles.container}>
-          {/* This is a average menu used to display every kind of events.*/}
+          {/* This is a average menu used to display every kind of events.  ./../assets/img/pizzaLogo.png */}
+          
           <View style={styles.container}>
           <Image
             style={styles.hugeLogo}
@@ -79,13 +78,8 @@ const SignInScreen = ({navigation}) => {
             <CustomInput placeholder={'Email'} value={email} setValue={setEmail}/>
             <CustomInput placeholder={'Password'} value={password} setValue={setPassword} secureTextEntry={true}/>
             
-            <CustomButton text="Sign In" onPress={signInPressed} color='#6E5ADF' />
-
-            <CustomButton text="Forgot password?" onPress={signUpPressed}/>
-
-            <Text style={styles.textInput}> Don't have an account?</Text>
-            <Text style={styles.textInput}> Just sign up!</Text>
-            <CustomButton text="Sign Up" onPress={signUpPressed} color='#2F2F2F' />
+            <CustomButton text="Sign in" onPress={signInPressed} />
+            <CustomButton text="Sign up" onPress={signUpPressed} />
 
             </View>
           </View>
@@ -113,9 +107,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#212121',
         margin: 20,
         borderRadius: 20,
-        padding: '10%',
-        width: '90%',
-        height: '80%',
+        padding: '20%',
+        width: '70%',
+        height: '70%',
       },
       buttonNavigateBmi: {
         alignItems: 'center',
@@ -136,19 +130,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
       },
       hugeLogo: {
-        width: 200,
-        height: 100,
+        width: 400,
+        height: 200,
         alignItems: 'center',
         position: 'absolute',
         alignSelf: 'center',
         top: 0,
-      },
-      textInput:{
-        fontSize: 15, 
-        fontFamily: 'mtt-regular',
-        color: 'white',
-        justifyContent: 'center',
-        textAlign: 'center',
       },
 });
 

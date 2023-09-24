@@ -23,16 +23,17 @@ const styles = StyleSheet.create({
         
         alignItems: 'center',
         borderRadius: 30,
-        marginVertical: 15,
+        marginVertical: 10,
         borderWidth: 2,
-        padding: 15,
-        width: 200,
+        //paddingHorizontal: 90,
+        paddingVertical: 15,
+        width: 300,
         //height: '20%',
 
         justifyContent: 'center',
       },
       textInput:{
-        fontSize: 20, 
+        fontSize: 15, 
         fontFamily: 'mtt-regular',
         color: 'black',
       },

@@ -1,23 +1,26 @@
 import React from "react";
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const CustomButton = ( {onPress, text} ) => {
+const CustomButton = ( {onPress, text, color} ) => {
+  const buttonStyles = {
+    backgroundColor: color,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+    borderRadius: 30,
+    marginVertical: 30,
+    
+  };
+
     return(
-        <Pressable style={styles.content} onPress={onPress}>
+        <TouchableOpacity style={buttonStyles} onPress={onPress}>
             <Text style={styles.textInput}> {text} </Text>
-        </Pressable>
+        </TouchableOpacity>
     )
 }
 
+
 const styles = StyleSheet.create({
-      content: {
-        backgroundColor: '#6E5ADF',
-        
-        alignItems: 'center',
-        padding: 15,
-        borderRadius: 30,
-        marginVertical: 30,
-      },
       textInput:{
         fontSize: 20, 
         fontFamily: 'mtt-regular',
@@ -26,4 +29,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default CustomButton
+export default CustomButton;
