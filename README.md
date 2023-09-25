@@ -41,4 +41,9 @@ Heey, that's my portfolio (Just in case, if you will be interested what I actual
 ![377944443_6605544596193353_4045677513671386003_n](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/67829a46-b1b3-44da-8aa6-3ec909f8a942)
 
 
+                      ADDED AUTHENTICATION FUNCTION
+
+                      
+![security](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/fa09bdcd-80c7-44b6-848f-82e2230d2962)
+
 
