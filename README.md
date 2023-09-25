@@ -1,13 +1,4 @@
-# Something about me 👇
-Heey, that's my portfolio (Just in case, if you will be interested what I actually do) :)
-
-=====================================
-
-           My main skills
-    HTML | CSS | JS | REACT-NATIVE
-
-
-=====================================
+# Sign Go 👇
 
 
 ![itaintmuch](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/5d0a2e1b-769a-4876-b3dc-63d2ff1e06c7)
@@ -16,11 +7,12 @@ Heey, that's my portfolio (Just in case, if you will be interested what I actual
 ======================================
 
 
-                      ACTUAL PROJECT CATERING APP - FOOD GO ( STILL UNDER DEVELOPEMENT )
+                      ACTUAL PROJECT Sign Go - ( STILL UNDER DEVELOPEMENT )
                       PLANS IN THE FUTURE:
-                      - FIREBASE ✔
-                      - LOGIN AUTH ✔ NEEDS AN UPGRADE
-                      - PUSH NOTIF
+                      - FIREBASE 
+                      - LOGIN AUTH 
+                      - PROFILE
+                      - BETTER SECURITY
 ![pizzaLogo](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/b1789661-0a43-41d7-b677-223eedd478f7)
 
                       WORKING MENU ( W O W ) :D
