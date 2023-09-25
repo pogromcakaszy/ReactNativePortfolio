@@ -20,7 +20,7 @@ Heey, that's my portfolio (Just in case, if you will be interested what I actual
                       PLANS IN THE FUTURE:
                       - FIREBASE ✔
                       - LOGIN AUTH ✔ NEEDS AN UPGRADE
-                      - PUSH NOTIF
+                      
 ![pizzaLogo](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/b1789661-0a43-41d7-b677-223eedd478f7)
 
                       WORKING MENU ( W O W ) :D
