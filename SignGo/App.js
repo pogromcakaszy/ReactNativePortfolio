@@ -7,6 +7,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignInScreen from './src/screens/SignInScreen';
 import { useFonts } from 'expo-font';
+import ForgotScreen from './src/screens/ForgotScreen';
+import SignUpScreen from './src/screens/SingUpScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,7 +37,9 @@ export default function App() {
       >
 
         <Stack.Screen name="SignIn" component={SignInScreen}/>
-
+        <Stack.Screen name="FogrotPassword" component={ForgotScreen}/>
+        <Stack.Screen name="SignUp" component={SignUpScreen}/>
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

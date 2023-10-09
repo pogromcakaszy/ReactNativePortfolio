@@ -13,6 +13,8 @@ import {
 import CustomInput from '../components/CustomInput/CustomInput';
 import CustomButton from '../components/CustomButton/CustomButton';
 import React from 'react';
+import ForgotScreen from './ForgotScreen';
+import { useNavigation } from "@react-navigation/native";
 
 
 const DismissKeyboard = ({children}) => (
@@ -27,6 +29,15 @@ export default function SignInScreen ({ navigation }) {
     const pressedButton = () => {
         Alert.alert('test')
     };
+
+    const forgotPasswordPressed = () => {
+        navigation.navigate("FogrotPassword")
+    };
+
+    const signUpPressed = () => {
+        navigation.navigate("SignUp")
+    };
+
 
     return (
     <DismissKeyboard>
@@ -44,8 +55,8 @@ export default function SignInScreen ({ navigation }) {
                 <CustomInput placeholder={'Password'} secureTextEntry={true}/>
 
                 <CustomButton onPress={pressedButton} color={'#640D14'} text={'Sign In'} marginVertical={10}/>
-                <CustomButton onPress={pressedButton} color={'#640D14'} text={'Sign Up'} marginVertical={10}/>
-                <CustomButton onPress={pressedButton} color={'#38040E'} text={'Forgot password?'} marginVertical={50}/>
+                <CustomButton onPress={signUpPressed} color={'#640D14'} text={'Sign Up'} marginVertical={10}/>
+                <CustomButton onPress={forgotPasswordPressed} color={'#38040E'} text={'Forgot password?'} marginVertical={50}/>
             </View>
 
         </View>
