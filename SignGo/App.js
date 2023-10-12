@@ -83,7 +83,7 @@ function HomeTabs(){
       component={HomeScreen} 
       options={{
         tabBarIcon: ({color, size}) => (
-          <Ionicons name='home-outline' color={color} size={size}/>
+          <Ionicons name='home-sharp' color={color} size={size}/>
         )}}/>
 
       <Tab.Screen name="Profile" component={ProfileScreen} 
