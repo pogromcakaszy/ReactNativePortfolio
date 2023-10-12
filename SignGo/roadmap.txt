@@ -1,0 +1,5 @@
+Road Map
+
+1. Complete login / register / forgot
+2. Add veryfication
+3. Add database

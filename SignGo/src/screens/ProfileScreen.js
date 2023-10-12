@@ -13,15 +13,14 @@ import {
 import React, { useState } from 'react';
 
 
-
-function HomeScreen ({ navigation, Tabs }) {
+function ProfileScreen ({ navigation, Tabs }) {
 
     return (
       
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
             <View style={styles.squareBot}>
-              <Text> Home SCREEN</Text>
+              <Text> profile SCREEN</Text>
             </View>
         </View>
       </SafeAreaView>
@@ -54,4 +53,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HomeScreen;
+export default ProfileScreen;

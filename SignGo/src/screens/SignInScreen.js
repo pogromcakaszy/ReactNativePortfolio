@@ -17,7 +17,8 @@ import ForgotScreen from './ForgotScreen';
 import { useNavigation } from "@react-navigation/native";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FIREBASE_AUTH } from '../../firebase';
-
+import HomeScreen from './HomeScreen';
+import SettingScreen from './SettingsScreen';
 
 const DismissKeyboard = ({children}) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -32,7 +33,7 @@ export default function SignInScreen ({ navigation }) {
 
     const[email,setEmail] = useState('')
     const[password,setPassword] = useState('')
-    const [loading, setLoading] = useState(false);
+    const[loading, setLoading] = useState(false);
 
     const pressedButton = () => {
         Alert.alert('test')
@@ -43,6 +44,7 @@ export default function SignInScreen ({ navigation }) {
         try{
             const response = await signInWithEmailAndPassword(auth, email, password)
             console.log(response)
+            navigation.navigate("Home")
         }catch(error){
             console.log(error);
             alert('We cannot login to your account ' + error.message);

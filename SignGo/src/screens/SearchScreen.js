@@ -2,8 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import { 
   StyleSheet, 
   Text,
-  Image,
-  Alert,
   View, 
   SafeAreaView, 
   Keyboard,
@@ -13,15 +11,14 @@ import {
 import React, { useState } from 'react';
 
 
-
-function HomeScreen ({ navigation, Tabs }) {
+function SearchScreen ({ navigation, Tabs }) {
 
     return (
       
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
             <View style={styles.squareBot}>
-              <Text> Home SCREEN</Text>
+              <Text> search SCREEN</Text>
             </View>
         </View>
       </SafeAreaView>
@@ -54,4 +51,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HomeScreen;
+export default SearchScreen;
