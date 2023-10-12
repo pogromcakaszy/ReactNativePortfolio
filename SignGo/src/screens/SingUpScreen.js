@@ -12,9 +12,11 @@ import {
 } from 'react-native';
 import CustomInput from '../components/CustomInput/CustomInput';
 import CustomButton from '../components/CustomButton/CustomButton';
-import React from 'react';
-import { Dimensions } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
+import React, { useState } from 'react';
+import { Dimensions } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { FIREBASE_AUTH } from '../../firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const DismissKeyboard = ({children}) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -25,34 +27,52 @@ const DismissKeyboard = ({children}) => (
 
 export default function SignUpScreen ({ navigation }) {
 
-    const pressedButton = () => {
-        Alert.alert('test')
-    };
+    const auth = FIREBASE_AUTH;
+
+    const[email,setEmail] = useState('');
+    const[password,setPassword] = useState('');
+    const[loading, setLoading] = useState(false);
 
     
     const forgotPasswordPressed = () => {
         navigation.navigate("FogrotPassword")
     };
 
-    const signUpPressed = () => {
-        navigation.navigate("SignUp")
-    };
-
-    
+    const handleSignUp = async () => {
+        setLoading(true);
+        try{
+          const response = await createUserWithEmailAndPassword(auth, email, password);
+          console.log(response)
+          alert('Register sucesfully');
+        }catch (error){
+          console.log(error);
+          alert('We cannot create your account' + error.message);
+        } finally {
+          setLoading(false);
+        }
+    }
 
     return (
     <DismissKeyboard>
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
 
-            
-
             <View style={styles.squareBot}>
-                <CustomInput placeholder={'Email'}/>
-                <CustomInput placeholder={'Password'} secureTextEntry={true}/>
+                <CustomInput
+                placeholder='Email'
+                value={email}
+                setValue={setEmail}
+                />
+                <CustomInput
+                placeholder={'Password'} 
+                secureTextEntry={true} 
+                value={password} 
+                setValue={setPassword}
+                />
 
-                <CustomButton onPress={pressedButton} color={'#640D14'} text={'Sign Up'} marginVertical={10}/>
+                <CustomButton onPress={handleSignUp} color={'#640D14'} text={'Sign Up'} marginVertical={10}/>
                 <CustomButton onPress={forgotPasswordPressed} color={'#38040E'} text={'Forgot password?'} marginVertical={50}/>
+                
             </View>
         </View>
       </SafeAreaView>
