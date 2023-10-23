@@ -16,6 +16,8 @@ import React, { useState } from 'react';
 
 function HomeScreen ({ navigation, Tabs }) {
 
+    //test
+
     return (
       
       <SafeAreaView style={styles.container}>
