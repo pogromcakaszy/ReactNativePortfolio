@@ -16,11 +16,11 @@ import { getAuth, signOut } from 'firebase/auth';
 
 function HomeScreen ({ navigation, Tabs }) {
 
+    
     const auth = getAuth();
     const route = useRoute();
 
-    // TEST
-    // SIGN OUT SYSTEM x
+    // SIGN OUT SYSTEM
     const signOut= async () => {
       try {
         await auth.signOut();
@@ -30,12 +30,14 @@ function HomeScreen ({ navigation, Tabs }) {
         console.log(error)
       }
     }
-
+    //    <Text> Data: 1 {route.params.email}</Text>
+    
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
             <View style={styles.squareBot}>
-              <Text> Data: 1 {route.params.email}</Text>
+            
+
               <TouchableOpacity
               style={styles.button}
               onPress={signOut}

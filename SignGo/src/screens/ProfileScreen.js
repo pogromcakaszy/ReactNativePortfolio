@@ -15,20 +15,17 @@ import React, { useState } from 'react';
 
 function ProfileScreen ({ navigation, Tabs, route }) {
 
-    //const { emailId } = route.params;
-
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
             <View style={styles.squareBot}>
-              <Text> Data:  2 {route.params.email} </Text>
+              <Text> Data:  2</Text>
               
             </View>
         </View>
       </SafeAreaView>
     );
 }
-//<Text> Data: {emailId} </Text>
 
 const styles = StyleSheet.create({
     container: {
