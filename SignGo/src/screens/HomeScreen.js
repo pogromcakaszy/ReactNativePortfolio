@@ -19,6 +19,7 @@ function HomeScreen ({ navigation, Tabs }) {
     const auth = getAuth();
     const route = useRoute();
 
+    // TEST
     // SIGN OUT SYSTEM x
     const signOut= async () => {
       try {
