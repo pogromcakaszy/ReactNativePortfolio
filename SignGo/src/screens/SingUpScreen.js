@@ -45,7 +45,7 @@ export default function SignUpScreen ({ navigation }) {
           const response = await createUserWithEmailAndPassword(auth, email, password);
           console.log(response)
           alert('Register sucesfully');
-          navigation.navigate("Home");
+          navigation.navigate("SignIn");
         }catch (error){
           console.log(error);
           alert('We cannot create your account' + error.message);

@@ -19,25 +19,11 @@ function HomeScreen ({ navigation, Tabs }) {
     
     const auth = getAuth();
     const route = useRoute();
-
-    // SIGN OUT SYSTEM
-    const signOut= async () => {
-      try {
-        await auth.signOut();
-        alert('Log Out sucesfully');
-        navigation.navigate("SignIn");
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    //    <Text> Data: 1 {route.params.email}</Text>
     
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
-            <View style={styles.squareBot}>
-            
-
+            <View style={styles.squareBot}>  
               <TouchableOpacity
               style={styles.button}
               onPress={signOut}

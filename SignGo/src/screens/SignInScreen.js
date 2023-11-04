@@ -19,6 +19,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FIREBASE_AUTH } from '../../firebase';
 import HomeScreen from './HomeScreen';
 import SettingScreen from './SettingsScreen';
+import ProfileScreen from './ProfileScreen';
 
 const DismissKeyboard = ({children}) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -29,18 +30,12 @@ const DismissKeyboard = ({children}) => (
 
 export default function SignInScreen ({ navigation }) {
     
-
     const auth = FIREBASE_AUTH;
 
     const[email,setEmail] = useState('')
     const[password,setPassword] = useState('')
     const[loading, setLoading] = useState(false);
     
-    // Register navigate with email data
-    const register = () => {
-        navigation.navigate("Home", {email: email});
-    }
-
     const pressedButton = () => {
         Alert.alert('test')
     };
@@ -51,7 +46,7 @@ export default function SignInScreen ({ navigation }) {
             const response = await signInWithEmailAndPassword(auth, email, password);
             console.log(response);
             console.log('Email to be passed:', email);
-            register();
+            navigation.navigate("Profile", {email: email});
         }catch(error){
             console.log(error);
             alert('We cannot login to your account ' + error.message);

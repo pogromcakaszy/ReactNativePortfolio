@@ -19,44 +19,11 @@ import TabNavigator from './src/navigation/TabNavigator';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function App() {
+function HomeTabs({ navigation, route}){
 
-  const [isLoaded] = useFonts({
-    'Montserrat': require('./assets/fonts/Montserrat-Regular.ttf'),
-  });
-
-  const handleOnLayout = useCallback(async () => {
-    if (isLoaded){
-      await SplashScreen.hideAsync();
-    }
-  }, [isLoaded]);
-
-  if(!isLoaded){
-    return null;
-  }
-
-
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-        headerShown: false
-      }}
-      >
-        <Stack.Screen name="SignIn" component={SignInScreen}/>
-        <Stack.Screen name="FogrotPassword" component={ForgotScreen}/>
-        <Stack.Screen name="SignUp" component={SignUpScreen}/>
-        <Stack.Screen name="Home" component={HomeTabs}/>
-        
-      </Stack.Navigator>
-      
-    </NavigationContainer>
-    
-  );
-
-  function HomeTabs(){
-    return (
-      <Tab.Navigator
+  const { email } = route.params;
+  return(
+    <Tab.Navigator
       screenOptions={{
         headerShown: false,
         unmountOnBlur: false,
@@ -79,42 +46,71 @@ export default function App() {
         }
       }}
       >
-        
-        <Tab.Screen
-        name="HomeScreen" 
-        component={HomeScreen} 
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Ionicons name='home-sharp' color={color} size={size}/>
-          )}}/>
-  
-        <Tab.Screen name="Profile" component={ProfileScreen} 
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Ionicons name='person-sharp' color={color} size={size}/>
-        )}}/>
-  
-        <Tab.Screen name="Setting" component={SettingScreen} 
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Ionicons name='settings-sharp' color={color} size={size}/>
-        )}}/>
-  
-        <Tab.Screen name="Search" component={SearchScreen}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Ionicons name='search-sharp' color={color} size={size}/>
-        )}}/>
-  
-      </Tab.Navigator>
-    );
-  }
+
+      <Tab.Screen name="Profiles" 
+      component={ProfileScreen} 
+      initialParams={{ email: email }} 
+      options={{
+        tabBarIcon: ({color, size}) => (
+          <Ionicons name='person-sharp' color={color} size={size}/>
+      )}}
+      />
+
+      <Tab.Screen name="Home" 
+      component={HomeScreen} 
+      options={{
+        tabBarIcon: ({color, size}) => (
+          <Ionicons name='home-sharp' color={color} size={size}/>
+      )}}
+      />
+
+      <Tab.Screen name="Settings" 
+      component={SettingScreen} 
+      options={{
+        tabBarIcon: ({color, size}) => (
+          <Ionicons name='settings-sharp' color={color} size={size}/>
+      )}}
+      />
 
 
 
+    </Tab.Navigator>
+  );
 }
 
+export default function App() {
 
+  const [isLoaded] = useFonts({
+    'Montserrat': require('./assets/fonts/Montserrat-Regular.ttf'),
+  });
+
+  const handleOnLayout = useCallback(async () => {
+    if (isLoaded){
+      await SplashScreen.hideAsync();
+    }
+  }, [isLoaded]);
+
+  if(!isLoaded){
+    return null;
+  }
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+        headerShown: false,
+      }}
+      >
+        <Stack.Screen name="SignIn" component={SignInScreen}/>
+        <Stack.Screen name="FogrotPassword" component={ForgotScreen}/>
+        <Stack.Screen name="SignUp" component={SignUpScreen}/>
+        <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="Profile" component={HomeTabs} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+  
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -124,63 +120,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-/*
-
-function HomeTabs(){
-  return (
-    <Tab.Navigator
-    screenOptions={{
-      headerShown: false,
-      unmountOnBlur: false,
-      tabBarShowLabel: false,
-      tabBarInactiveTintColor: '#FFFFFF',
-      tabBarActiveTintColor: '#38040E',
-      tabBarStyle:{
-        height: 90,
-        borderRadius: 30,
-        backgroundColor: '#AD2831',
-        position: 'absolute',
-        overflow: 'hidden',
-        borderTopWidth: 0,        
-      },
-      tabBarItemStyle:{
-        backgroundColor:'#800E13',
-        margin: 5,
-        top: 10,
-        borderRadius:50,
-      }
-    }}
-    >
-      
-      <Tab.Screen
-      name="HomeScreen" 
-      component={HomeScreen} 
-      options={{
-        tabBarIcon: ({color, size}) => (
-          <Ionicons name='home-sharp' color={color} size={size}/>
-        )}}/>
-
-      <Tab.Screen name="Profile" component={ProfileScreen} 
-      options={{
-        tabBarIcon: ({color, size}) => (
-          <Ionicons name='person-sharp' color={color} size={size}/>
-      )}}/>
-
-      <Tab.Screen name="Setting" component={SettingScreen} 
-      options={{
-        tabBarIcon: ({color, size}) => (
-          <Ionicons name='settings-sharp' color={color} size={size}/>
-      )}}/>
-
-      <Tab.Screen name="Search" component={SearchScreen}
-      options={{
-        tabBarIcon: ({color, size}) => (
-          <Ionicons name='search-sharp' color={color} size={size}/>
-      )}}/>
-
-    </Tab.Navigator>
-  );
-}
-
-*/
