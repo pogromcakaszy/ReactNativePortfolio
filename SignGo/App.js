@@ -15,14 +15,21 @@ import SearchScreen from './src/screens/SearchScreen';
 import SettingScreen from './src/screens/SettingsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import TabNavigator from './src/navigation/TabNavigator';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
+import ObjectScreen from './src/screens/ObjectScreen';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+
 function HomeTabs({ navigation, route}){
 
+  
   const { email } = route.params;
   return(
+    <Provider store={store}>
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
@@ -75,10 +82,13 @@ function HomeTabs({ navigation, route}){
 
 
     </Tab.Navigator>
+    </Provider>
   );
 }
 
 export default function App() {
+
+  
 
   const [isLoaded] = useFonts({
     'Montserrat': require('./assets/fonts/Montserrat-Regular.ttf'),
@@ -95,6 +105,8 @@ export default function App() {
   }
 
   return (
+    <Provider store={store}>
+
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
@@ -106,8 +118,12 @@ export default function App() {
         <Stack.Screen name="SignUp" component={SignUpScreen}/>
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="Profile" component={HomeTabs} />
+        <Stack.Screen name="Object" component={ObjectScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
+
   );
   
 }
