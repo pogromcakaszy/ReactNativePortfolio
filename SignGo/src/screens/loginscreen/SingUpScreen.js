@@ -10,12 +10,12 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from 'react-native';
-import CustomInput from '../components/CustomInput/CustomInput';
-import CustomButton from '../components/CustomButton/CustomButton';
+import CustomInput from '../../components/CustomInput/CustomInput';
+import CustomButton from '../../components/CustomButton/CustomButton';
 import React, { useState } from 'react';
 import { Dimensions } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { FIREBASE_AUTH } from '../../firebase';
+import { FIREBASE_AUTH } from '../../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const DismissKeyboard = ({children}) => (

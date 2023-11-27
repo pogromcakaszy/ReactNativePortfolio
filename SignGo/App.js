@@ -1,23 +1,33 @@
+//IMPORT FEATURES
 import { StatusBar } from 'expo-status-bar';
-import HomeScreen from './src/screens/HomeScreen';
-import SplashScreen from 'react-native-splash-screen';
 import { useCallback } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import SignInScreen from './src/screens/SignInScreen';
 import { useFonts } from 'expo-font';
-import ForgotScreen from './src/screens/ForgotScreen';
-import SignUpScreen from './src/screens/SingUpScreen';
-import ProfileScreen from './src/screens/ProfileScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import SearchScreen from './src/screens/SearchScreen';
-import SettingScreen from './src/screens/SettingsScreen';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import TabNavigator from './src/navigation/TabNavigator';
 import { Provider } from 'react-redux';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from './src/redux/store';
-import ObjectScreen from './src/screens/ObjectScreen';
+
+//IMPORT SCREENS
+import HomeScreen from './src/screens/appscreens/HomeScreen';
+import ProfileScreen from './src/screens/appscreens/ProfileScreen';
+import SearchScreen from './src/screens/appscreens/SearchScreen';
+import SettingScreen from './src/screens/appscreens/SettingsScreen';
+import TabNavigator from './src/navigation/TabNavigator';
+import ObjectScreen from './src/screens/appscreens/ObjectScreen';
+
+//IMPORT LOGIN SCREENS
+import SplashScreen from 'react-native-splash-screen';
+import SignInScreen from './src/screens/loginscreen/SignInScreen';
+import SignUpScreen from './src/screens/loginscreen/SingUpScreen';
+import ForgotScreen from './src/screens/loginscreen/ForgotScreen';
+
+
+
+
+
 
 
 const Stack = createNativeStackNavigator();

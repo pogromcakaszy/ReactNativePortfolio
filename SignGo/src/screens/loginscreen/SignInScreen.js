@@ -10,16 +10,16 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from 'react-native';
-import CustomInput from '../components/CustomInput/CustomInput';
-import CustomButton from '../components/CustomButton/CustomButton';
+import CustomInput from '../../components/CustomInput/CustomInput';
+import CustomButton from '../../components/CustomButton/CustomButton';
 import React, { useState } from 'react';
 import ForgotScreen from './ForgotScreen';
 import { useNavigation } from "@react-navigation/native";
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { FIREBASE_AUTH } from '../../firebase';
-import HomeScreen from './HomeScreen';
-import SettingScreen from './SettingsScreen';
-import ProfileScreen from './ProfileScreen';
+import { FIREBASE_AUTH } from '../../../firebase';
+import HomeScreen from '../appscreens/HomeScreen';
+import SettingScreen from '../appscreens/SettingsScreen';
+import ProfileScreen from '../appscreens/ProfileScreen';
 
 const DismissKeyboard = ({children}) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -71,7 +71,7 @@ export default function SignInScreen ({ navigation }) {
             <View style={styles.squareTop}>
                 <Image 
                 style={styles.logo}
-                source={require('../../assets/img/logo.png')}/>
+                source={require('../../../assets/img/logo.png')}/>
             </View>
 
             <View style={styles.squareBot}>

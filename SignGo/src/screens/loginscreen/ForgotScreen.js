@@ -10,8 +10,8 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from 'react-native';
-//import CustomInput from '../components/CustomInput';
-//import CustomButton from '../components/CustomButton';
+import CustomButton from '../../components/CustomButton/CustomButton';
+import CustomInput from '../../components/CustomInput/CustomInput';
 import React from 'react';
 
 const DismissKeyboard = ({children}) => (
@@ -35,7 +35,7 @@ export default function ForgotScreen ({ navigation }) {
             <View style={styles.squareTop}>
                 <Image 
                 style={styles.logo}
-                source={require('../../assets/img/logo.png')}/>
+                source={require('../../../assets/img/logo.png')}/>
             </View>
 
             <View style={styles.squareBot}>

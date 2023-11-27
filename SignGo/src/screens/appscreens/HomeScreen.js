@@ -9,9 +9,9 @@ import {
 import React, { useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { getAuth, signOut } from 'firebase/auth';
-import { fetchUserData } from '../redux/actions';
+import { fetchUserData } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
-import GridItem from '../components/GridItem';
+import GridItem from '../../components/GridItem';
 
 
 export const data = [
