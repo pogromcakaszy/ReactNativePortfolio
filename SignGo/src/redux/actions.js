@@ -5,13 +5,14 @@ export const setSelectedObjectId = (id) => ({
     }
 });
 
-export const fetchUserData = (id, names, imageUrl) => {
+export const fetchUserData = (id, names, imageUrl, desc) => {
     return {
         type: 'FETCH_USER_DATA',
         payload: {
             id,
             names,
             imageUrl,
+            desc,
         },
     };
 };

@@ -1,6 +1,7 @@
 const initialState = {
   selectedObjectId: null,
   selectedObjectName: null,
+  selectedObjectDesc: null,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -10,6 +11,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         selectedObjectId: action.payload,
         selectedObjectName: action.payload,
+        selectedObjectDesc: action.payload,
       };
       case 'FETCH_USER_DATA':
       return {
@@ -17,6 +19,7 @@ const rootReducer = (state = initialState, action) => {
         id: action.payload.id,
         names: action.payload.names,
         imageUrl: action.payload.imageUrl,
+        desc: action.payload.desc,
       };
     default:
       return state;

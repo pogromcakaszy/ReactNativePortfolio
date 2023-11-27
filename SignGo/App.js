@@ -24,19 +24,11 @@ import SignInScreen from './src/screens/loginscreen/SignInScreen';
 import SignUpScreen from './src/screens/loginscreen/SingUpScreen';
 import ForgotScreen from './src/screens/loginscreen/ForgotScreen';
 
-
-
-
-
-
-
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-
 function HomeTabs({ navigation, route}){
 
-  
   const { email } = route.params;
   return(
     <Provider store={store}>
@@ -89,16 +81,12 @@ function HomeTabs({ navigation, route}){
       )}}
       />
 
-
-
     </Tab.Navigator>
     </Provider>
   );
 }
 
 export default function App() {
-
-  
 
   const [isLoaded] = useFonts({
     'Montserrat': require('./assets/fonts/Montserrat-Regular.ttf'),

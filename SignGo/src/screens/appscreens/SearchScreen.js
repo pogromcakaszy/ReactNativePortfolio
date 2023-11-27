@@ -18,7 +18,7 @@ function SearchScreen ({ navigation, Tabs }) {
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
             <View style={styles.squareBot}>
-              <Text> search SCREEN </Text>
+              <Text> search SCREEN WIP</Text>
             </View>
         </View>
       </SafeAreaView>

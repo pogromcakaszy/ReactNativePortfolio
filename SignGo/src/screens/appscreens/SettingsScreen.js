@@ -15,7 +15,7 @@ function SettingsScreen ({ navigation, Tabs }) {
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
             <View style={styles.squareBot}>
-              <Text> settings SCREEN</Text>
+              <Text> settings SCREEN WIP </Text>
             </View>
         </View>
       </SafeAreaView>

@@ -7,18 +7,22 @@ const ObjectScreen = () => {
   const selectedObjectId = useSelector((state) => state.id);
   const selectedObjectName = useSelector((state) => state.names);
   const selectedObjectImage = useSelector((state) => state.imageUrl);
+  const selectedObjectDesc = useSelector((state) => state.desc);
 
   return (
     <View style={styles.container}>
-      <Text>Detail</Text>
-      <Text>ID: {selectedObjectId}</Text>
-      <Text>NAME: {selectedObjectName}</Text>
-      {selectedObjectImage && (
-        <Image
+      <View style={styles.squareBot}>  
+        <View style={styles.squareTop}>  
+          <Image 
           source={{ uri: selectedObjectImage }}
-          style={{ width: 200, height: 200 }}
-        />
-      )}
+          style={styles.image}
+          />
+        </View>
+          <Text style={styles.textId}> ID: {selectedObjectId}</Text>
+          <Text style={styles.textName}> {selectedObjectName}</Text>
+          <Text style={styles.textDesc}> {selectedObjectDesc}</Text>
+      </View>
+      
     </View>
   );
 };
@@ -30,18 +34,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    squareTop: {
-        padding: '40%',
-        backgroundColor: '#38040E',
-        position: 'absolute',
-        top: 30, 
-        borderRadius: 40,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     squareBot: {
-        backgroundColor: '#800E13',
-        //top: 70,
+        backgroundColor: '#38040E',
         padding: '15%',
         height: '50%',
         borderRadius: 40,
@@ -51,6 +45,35 @@ const styles = StyleSheet.create({
       padding: '15%',
       height: '50%',
       borderRadius: 40,
-  },
+    },
+    image: {
+      width: 200,
+      height: 200,
+      resizeMode: 'contain',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    textId: {
+      fontSize: 20,
+      color: '#ffffff',
+      fontFamily: 'Montserrat',
+      textAlign: 'center',
+    },
+    textDesc: {
+      color: '#ffffff',
+      fontFamily: 'Montserrat',
+      fontSize: 15,
+      textAlign: 'center',
+    },
+    textName: {
+      color: '#ffffff',
+      fontFamily: 'Montserrat',
+      fontSize: 30,
+      textAlign: 'center',
+    },
+    squareTop: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
 });
 export default ObjectScreen;
