@@ -1,9 +1,10 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const CustomButton = ({ onPress, text, color, marginVertical, margin }) =>{
+const CustomButton = ({ onPress, text, bgcolor, marginVertical, margin, color }) =>{
 
     const buttonStyles={
-        backgroundColor: color,
+        backgroundColor: bgcolor,
+        color: color,
         alignItems: 'center',
         justifyContent: 'center',
         width: 150,
@@ -12,7 +13,7 @@ const CustomButton = ({ onPress, text, color, marginVertical, margin }) =>{
         margin: margin,
         marginVertical: marginVertical,
     };
-
+    
     return(
         <View>
             <TouchableOpacity style={buttonStyles} onPress={onPress}>
@@ -25,7 +26,7 @@ const CustomButton = ({ onPress, text, color, marginVertical, margin }) =>{
 const styles = StyleSheet.create({
     textButton:{
         fontSize: 15,
-        color: 'black'
+        //color: 'white'
     },  
 });
 

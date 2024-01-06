@@ -41,11 +41,9 @@ const Login = ({ navigation }) => {
             </View>
 
             <View style={styles.botBar}>
-                <CustomButton text={'login'} color={'white'} marginVertical={20} onPress={ping} />
-                <CustomButton text={'forgot password'} color={'white'} margin={10} onPress={ping} />
-                <CustomButton text={'register'} color={'white'} margin={10} onPress={ping} />
-
-
+                <CustomButton text={'login'} bgcolor={'#F4D1AE'} color={'white'} marginVertical={20} onPress={ping} />
+                <CustomButton text={'forgot password'} margin={10} onPress={ping} />
+                <CustomButton text={'register'} margin={10} onPress={ping} />
             </View>
 
         </LinearGradient>
