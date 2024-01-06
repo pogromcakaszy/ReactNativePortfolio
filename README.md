@@ -1,12 +1,10 @@
 # GEAR FEAR 👇
-Heey, that's my portfolio (Just in case, if you will be interested what I actually do) :)
 
-============================
+# YOUR SNEAKERS SHOP
+ Work in progress
 
-    My main skills
-HTML | CSS | JS | REACT-NATIVE
+![Screen1](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/afcd9161-0cd6-4ec1-936c-d362ef3362a9)
 
-============================
 
 
 
