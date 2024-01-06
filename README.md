@@ -1,8 +1,7 @@
 # GEAR FEAR 👇
- 
-                          Your Sneakers Shop 
-                           work in progress
 
+# YOUR SNEAKERS SHOP
+ Work in progress
 
 ![Screen1](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/afcd9161-0cd6-4ec1-936c-d362ef3362a9)
 
