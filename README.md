@@ -1,4 +1,4 @@
-# Something about me 👇
+# GEAR FEAR 👇
 Heey, that's my portfolio (Just in case, if you will be interested what I actually do) :)
 
 ============================
