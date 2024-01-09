@@ -55,13 +55,13 @@ const Login = ({ navigation }) => {
             
             if(login === 'admin' && password === 'admin'){
                 Alert.alert('Passed');
-                navigation.navigate("AdminDashboard");
+                navigation.navigate("AdminDashboard", {login: login});
             }else{
                 usersSnapshot.forEach((doc) => {
                     const userData = doc.data();
                     if (login === userData.login && password === userData.password) {
                         Alert.alert('Passed');
-                        navigation.navigate("Dashboard");
+                        navigation.navigate("Dashboard", {login: login});
                     }
                 });
             }

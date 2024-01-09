@@ -18,6 +18,8 @@ import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../../firebaseConfig';
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import { FIRESTORE_DB } from '../../firebaseConfig';
+import { useRoute } from '@react-navigation/native';
+
 
 const db = getFirestore();
 
@@ -27,9 +29,9 @@ const DismissKeyboard = ({ children }) => (
     </TouchableWithoutFeedback>
 );
 
-const AdminDashboard = ({ navigation }) => {
+const AdminDashboard = ({ navigation, route }) => {
 
-
+    const {login} = route.params;
 
     return (
         <DismissKeyboard>
@@ -39,7 +41,7 @@ const AdminDashboard = ({ navigation }) => {
                 style={styles.container}
             >
                 <View style={styles.topBar}>
-                    <Text> ADMIN PANEL </Text>
+                    <Text> Welcome {login} </Text>
                 </View>
 
             </LinearGradient>
