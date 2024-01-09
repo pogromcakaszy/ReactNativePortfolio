@@ -16,11 +16,10 @@ import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../../firebaseConfig';
-import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore";
+import { collection, addDoc, getFirestore } from "firebase/firestore";
 import { FIRESTORE_DB } from '../../firebaseConfig';
-import { db } from '../../firebaseConfig';
 
-//const db = getFirestore();
+const db = getFirestore();
 
 const DismissKeyboard = ({ children }) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -28,49 +27,54 @@ const DismissKeyboard = ({ children }) => (
     </TouchableWithoutFeedback>
 );
 
-const Login = ({ navigation }) => {
+const Register = ({ navigation }) => {
 
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
 
-    const signUpPressed = () => {
-        navigation.navigate("Register");
-    }
-
-    const logged = () => {
-        navigation.navigate("Dashboard");
+    const loginPressed = () => {
+        navigation.navigate("Login");
     }
 
     const ping = () => {
         Alert.alert('Alert Title', 'My Alert Msg', [
+            {
+                text: 'Ask me later',
+                onPress: () => console.log('Ask me later pressed'),
+            },
+            {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+            },
             { text: 'OK', onPress: () => console.log('OK Pressed') },
         ]);
     }
 
-    const loginUser = async () => {
+    const loginSucced = () => {
+        Alert.alert('Login Succed', 'You can login now', [
+            { text: 'OK', onPress: (loginPressed()) },
+        ]);
+    }
+
+    const addUser = async () => {
         try {
-            const usersRef = collection(db, 'users');
-            const usersSnapshot = await getDocs(usersRef);
-            
-            if(login === 'admin' && password === 'admin'){
-                Alert.alert('Passed');
-                navigation.navigate("AdminDashboard");
-            }else{
-                usersSnapshot.forEach((doc) => {
-                    const userData = doc.data();
-                    if (login === userData.login && password === userData.password) {
-                        Alert.alert('Passed');
-                        navigation.navigate("Dashboard");
-                    }
-                });
-            }
-        } catch (error) {
-            console.error('Error during login:', error);
-            Alert.alert('Error during login');
+            const docRef = await addDoc(collection(db, "users"), {
+                login: login,
+                password: password,
+                email: email,
+                isAdmin: "false",
+            });
+            console.log("Document written with ID: ", docRef.id);
+            console.log("Account created");
+        } catch (e) {
+            console.error("Error adding document: ", e);
         }
-    };
-    
+        loginSucced();
+    }
+
+
 
     return (
         <DismissKeyboard>
@@ -89,12 +93,13 @@ const Login = ({ navigation }) => {
                 <View style={styles.midBar}>
                     <CustomInput placeholder={'Login'} value={login} setValue={setLogin} />
                     <CustomInput placeholder={'Password'} value={password} setValue={setPassword} secureTextEntry={true} />
+                    <CustomInput placeholder={'Email'} value={email} setValue={setEmail}/>
                 </View>
 
                 <View style={styles.botBar}>
-                    <CustomButton onPress={loginUser} text={'login'} bgcolor={'#F4D1AE'} color={'white'} marginVertical={20} />
-                    <CustomButton onPress={ping} text={'forgot password'} margin={10} />
-                    <CustomButton onPress={signUpPressed} text={'register'} margin={10} />
+                    <CustomButton text={'Register'} bgcolor={'#F4D1AE'} color={'white'} marginVertical={20} onPress={addUser} />
+                    <CustomButton text={'Login'} margin={10} onPress={ping} />
+                    <CustomButton text={'Forgot Password'} margin={10} onPress={ping} />
                 </View>
 
             </LinearGradient>
@@ -123,7 +128,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Login;
+export default Register;
 
 
 //F56476
