@@ -51,22 +51,33 @@ const Login = ({ navigation }) => {
             const usersRef = collection(db, 'users');
             const usersSnapshot = await getDocs(usersRef);
             let isAdmin = false;
+            let userFound = false;
 
             usersSnapshot.forEach((doc) => {
                 const userData = doc.data();
                 if (login === userData.login && password === userData.password) {
-                    if (userData.isAdmin === true){
-                        isAdmin = true;
-                        navigation.navigate("AdminDashboard", { login: login });
-                    }else{
-                        navigation.navigate("Dashboard", { login: login });
-                    }
+                    userFound = true;
+                    if(userFound === true){
+                        if (userData.isAdmin === true){
+                            isAdmin = true;
+                            navigation.navigate("AdminDashboard", { login: login });
+                        }else{
+                            navigation.navigate("Dashboard", { login: login });
+                        }
+                    } 
                 }
+
+                if(!userFound){
+                    Alert.alert('Error login');
+                }
+
             });
         } catch (error) {
             console.error('Error during login:', error);
         }
+
     };
+
 
     return (
         //<DismissKeyboard>
