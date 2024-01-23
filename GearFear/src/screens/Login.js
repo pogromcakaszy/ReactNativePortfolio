@@ -34,13 +34,10 @@ const Login = ({ navigation }) => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
+    const [isAdmin, setIsAdmin] = useState(true)
 
     const signUpPressed = () => {
         navigation.navigate("Register");
-    }
-
-    const logged = () => {
-        navigation.navigate("Dashboard");
     }
 
     const ping = () => {
@@ -53,58 +50,55 @@ const Login = ({ navigation }) => {
         try {
             const usersRef = collection(db, 'users');
             const usersSnapshot = await getDocs(usersRef);
+            let isAdmin = false;
 
-            if (login === 'admin' && password === 'admin') {
-                Alert.alert('Passed');
-                navigation.navigate("AdminDashboard", { login: login });
-            } else {
-                usersSnapshot.forEach((doc) => {
-                    const userData = doc.data();
-                    if (login === userData.login && password === userData.password) {
-                        Alert.alert('Passed');
+            usersSnapshot.forEach((doc) => {
+                const userData = doc.data();
+                if (login === userData.login && password === userData.password) {
+                    if (userData.isAdmin === true){
+                        isAdmin = true;
+                        navigation.navigate("AdminDashboard", { login: login });
+                    }else{
                         navigation.navigate("Dashboard", { login: login });
-                    } else {
-                        Alert.alert('Error during login');
                     }
-                });
-            }
+                }
+            });
         } catch (error) {
             console.error('Error during login:', error);
         }
     };
 
-
     return (
         //<DismissKeyboard>
 
-            <LinearGradient
-                colors={['#F56476', '#F6DFC8']}
-                style={styles.container}
-            >
-                <View style={styles.topBar}>
-                    <Image
-                        style={styles.imageTop}
-                        source={require('../../assets/logo.png')}
-                    />
-                </View>
+        <LinearGradient
+            colors={['#F56476', '#F6DFC8']}
+            style={styles.container}
+        >
+            <View style={styles.topBar}>
+                <Image
+                    style={styles.imageTop}
+                    source={require('../../assets/logo.png')}
+                />
+            </View>
 
-                <View style={styles.midBar}>
-                    <CustomInput placeholder={'Login'} value={login} setValue={setLogin} />
-                    <CustomInput placeholder={'Password'} value={password} setValue={setPassword} secureTextEntry={true} />
-                </View>
+            <View style={styles.midBar}>
+                <CustomInput placeholder={'Login'} value={login} setValue={setLogin} />
+                <CustomInput placeholder={'Password'} value={password} setValue={setPassword} secureTextEntry={true} />
+            </View>
 
-                <View style={styles.botBar1}>
-                    <CustomButtonOutline onPress={loginUser} text={'LOGIN'} textColor={'black'} marginVertical={20} width={150} />
-                </View>
+            <View style={styles.botBar1}>
+                <CustomButtonOutline onPress={loginUser} text={'LOGIN'} textColor={'black'} marginVertical={20} width={150} />
+            </View>
 
-                <View style={styles.botBar2}>
-                    <View style={styles.buttonContainer}>
-                        <CustomButton onPress={ping} text={'FORGOT PASSWORD?'} textColor={'#5E4352'} margin={10} width={200}  />
-                        <CustomButton onPress={signUpPressed} text={'REGISTER'} textColor={'#5E4352'} margin={10} width={150} />
-                    </View>
+            <View style={styles.botBar2}>
+                <View style={styles.buttonContainer}>
+                    <CustomButton onPress={ping} text={'FORGOT PASSWORD?'} textColor={'#5E4352'} margin={10} width={200} />
+                    <CustomButton onPress={signUpPressed} text={'REGISTER'} textColor={'#5E4352'} margin={10} width={150} />
                 </View>
+            </View>
 
-            </LinearGradient>
+        </LinearGradient>
         //</DismissKeyboard>
     );
 };
@@ -137,7 +131,6 @@ const styles = StyleSheet.create({
     },
     imageTop: {
         alignItems: 'center',
-        //padding: '0%',
         width: 270,
         height: 270,
         bottom: 100,
