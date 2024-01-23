@@ -19,6 +19,7 @@ import { firebaseConfig } from '../../firebaseConfig';
 import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore";
 import { FIRESTORE_DB } from '../../firebaseConfig';
 import { db } from '../../firebaseConfig';
+import CustomButtonOutline from '../components/CustomButtonOutline';
 
 //const db = getFirestore();
 
@@ -52,28 +53,29 @@ const Login = ({ navigation }) => {
         try {
             const usersRef = collection(db, 'users');
             const usersSnapshot = await getDocs(usersRef);
-            
-            if(login === 'admin' && password === 'admin'){
+
+            if (login === 'admin' && password === 'admin') {
                 Alert.alert('Passed');
-                navigation.navigate("AdminDashboard", {login: login});
-            }else{
+                navigation.navigate("AdminDashboard", { login: login });
+            } else {
                 usersSnapshot.forEach((doc) => {
                     const userData = doc.data();
                     if (login === userData.login && password === userData.password) {
                         Alert.alert('Passed');
-                        navigation.navigate("Dashboard", {login: login});
+                        navigation.navigate("Dashboard", { login: login });
+                    } else {
+                        Alert.alert('Error during login');
                     }
                 });
             }
         } catch (error) {
             console.error('Error during login:', error);
-            Alert.alert('Error during login');
         }
     };
-    
+
 
     return (
-        <DismissKeyboard>
+        //<DismissKeyboard>
 
             <LinearGradient
                 colors={['#F56476', '#F6DFC8']}
@@ -91,14 +93,19 @@ const Login = ({ navigation }) => {
                     <CustomInput placeholder={'Password'} value={password} setValue={setPassword} secureTextEntry={true} />
                 </View>
 
-                <View style={styles.botBar}>
-                    <CustomButton onPress={loginUser} text={'login'} bgcolor={'#F4D1AE'} color={'white'} marginVertical={20} />
-                    <CustomButton onPress={ping} text={'forgot password'} margin={10} />
-                    <CustomButton onPress={signUpPressed} text={'register'} margin={10} />
+                <View style={styles.botBar1}>
+                    <CustomButtonOutline onPress={loginUser} text={'LOGIN'} textColor={'black'} marginVertical={20} width={150} />
+                </View>
+
+                <View style={styles.botBar2}>
+                    <View style={styles.buttonContainer}>
+                        <CustomButton onPress={ping} text={'FORGOT PASSWORD?'} textColor={'#5E4352'} margin={10} width={200}  />
+                        <CustomButton onPress={signUpPressed} text={'REGISTER'} textColor={'#5E4352'} margin={10} width={150} />
+                    </View>
                 </View>
 
             </LinearGradient>
-        </DismissKeyboard>
+        //</DismissKeyboard>
     );
 };
 
@@ -112,14 +119,28 @@ const styles = StyleSheet.create({
     topBar: {
 
     },
-    botBar: {
+    midBar: {
+        bottom: 60,
+    },
+    botBar1: {
+        alignContent: 'center',
+        alignItems: 'center',
+        bottom: 40,
+    },
+    botBar2: {
+        top: 110,
         alignContent: 'center',
         alignItems: 'center',
     },
+    buttonContainer: {
+        flexDirection: 'row',
+    },
     imageTop: {
         alignItems: 'center',
-        padding: '0%',
-        bottom: 50,
+        //padding: '0%',
+        width: 270,
+        height: 270,
+        bottom: 100,
     },
 });
 

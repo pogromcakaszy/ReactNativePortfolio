@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const CustomButton = ({ onPress, text, bgcolor, marginVertical, margin, width, textColor }) =>{
+const CustomButtonOutline = ({ onPress, text, bgcolor, marginVertical, margin, width, textColor }) =>{
 
     const buttonStyles={
         backgroundColor: bgcolor,
@@ -8,9 +8,10 @@ const CustomButton = ({ onPress, text, bgcolor, marginVertical, margin, width, t
         justifyContent: 'center',
         width: width,
         paddingVertical: 15,
-        borderRadius: 5,
         margin: margin,
         marginVertical: marginVertical,
+        borderColor: 'black', 
+        borderWidth: 2,       
     };
     
     const textStyles = {
@@ -18,6 +19,8 @@ const CustomButton = ({ onPress, text, bgcolor, marginVertical, margin, width, t
         fontSize: 16,
         fontFamily: 'Montserrat',
     };
+
+
 
     return(
         <View>
@@ -28,4 +31,4 @@ const CustomButton = ({ onPress, text, bgcolor, marginVertical, margin, width, t
     );
 };
 
-export default CustomButton;
+export default CustomButtonOutline;

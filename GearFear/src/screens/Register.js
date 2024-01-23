@@ -18,6 +18,7 @@ import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../../firebaseConfig';
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import { FIRESTORE_DB } from '../../firebaseConfig';
+import CustomButtonOutline from '../components/CustomButtonOutline';
 
 const db = getFirestore();
 
@@ -77,7 +78,7 @@ const Register = ({ navigation }) => {
 
 
     return (
-        <DismissKeyboard>
+        //<DismissKeyboard>
 
             <LinearGradient
                 colors={['#F56476', '#F6DFC8']}
@@ -97,13 +98,13 @@ const Register = ({ navigation }) => {
                 </View>
 
                 <View style={styles.botBar}>
-                    <CustomButton text={'Register'} bgcolor={'#F4D1AE'} color={'white'} marginVertical={20} onPress={addUser} />
-                    <CustomButton text={'Login'} margin={10} onPress={ping} />
-                    <CustomButton text={'Forgot Password'} margin={10} onPress={ping} />
+                    <CustomButtonOutline text={'Register'} textColor={'black'} marginVertical={10} onPress={addUser}  margin={10} width={200}   />
+                    <CustomButtonOutline text={'Login'} margin={10} onPress={ping} width={200}  />
+                    <CustomButtonOutline text={'Forgot Password'} margin={10} onPress={ping} width={200}  />
                 </View>
 
             </LinearGradient>
-        </DismissKeyboard>
+        //</DismissKeyboard>
     );
 };
 
@@ -114,17 +115,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    topBar: {
-
+    midBar: {
+        bottom: 20,
     },
     botBar: {
+        top: 30,
         alignContent: 'center',
         alignItems: 'center',
     },
     imageTop: {
         alignItems: 'center',
-        padding: '0%',
-        bottom: 50,
+        width: 270,
+        height: 270,
+        bottom: 70,
     },
 });
 

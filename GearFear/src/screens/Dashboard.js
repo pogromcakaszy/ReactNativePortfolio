@@ -40,8 +40,10 @@ const Dashboard = ({ navigation , route}) => {
                 colors={['#F56476', '#F6DFC8']}
                 style={styles.container}
             >
+                
                 <View style={styles.topBar}>
                     <Text>Welcome {login}</Text>
+                    <Text>User box</Text>
                 </View>
 
             </LinearGradient>

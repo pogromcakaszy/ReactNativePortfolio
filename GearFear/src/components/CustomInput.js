@@ -11,7 +11,8 @@ const CustomInput = ({ value, setValue, placeholder, secureTextEntry }) => {
                 keyboardAppearance='dark'
                 placeholderTextColor={'#5E4352'}
                 secureTextEntry={secureTextEntry}
-
+                maxLength={20}
+                
             />
         </View>
     );
@@ -21,15 +22,20 @@ const styles = StyleSheet.create({
     content: {
         backgroundColor: 'white',
         alignItems: 'center',
-        borderRadius: 7,
+        borderRadius: 20,
         justifyContent: 'center',
-        paddingHorizontal: 140,
+        width: 300,
+        maxWidth: '100%',
         paddingVertical: 10,
         margin: 10,
     },
     textInput: {
+        fontFamily: 'Montserrat',
         color: 'black',
         fontSize: 20,
+        width: 300,
+        maxWidth: '100%',
+        textAlign: 'center',
     }
 });
 

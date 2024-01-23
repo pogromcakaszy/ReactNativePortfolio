@@ -19,6 +19,8 @@ import { firebaseConfig } from '../../firebaseConfig';
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import { FIRESTORE_DB } from '../../firebaseConfig';
 import { useRoute } from '@react-navigation/native';
+import CustomButtonOutline from '../components/CustomButtonOutline';
+
 
 
 const db = getFirestore();
@@ -33,6 +35,14 @@ const AdminDashboard = ({ navigation, route }) => {
 
     const {login} = route.params;
 
+    const ping = () => {
+        Alert.alert('Alert Title', 'My Alert Msg', [
+            { text: 'OK', onPress: () => console.log('OK Pressed') },
+        ]);
+    }
+
+
+
     return (
         <DismissKeyboard>
 
@@ -42,7 +52,10 @@ const AdminDashboard = ({ navigation, route }) => {
             >
                 <View style={styles.topBar}>
                     <Text> Welcome {login} </Text>
+                    <Text> Admin box</Text>
                 </View>
+
+                <CustomButtonOutline onPress={ping} text={'LOG OUT'} textColor={'black'} marginVertical={20} width={150} />
 
             </LinearGradient>
         </DismissKeyboard>
