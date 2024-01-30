@@ -7,10 +7,11 @@ import {
     Alert,
     Keyboard,
     TouchableWithoutFeedback,
-    TouchableOpacity
+    Pressable
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
@@ -20,6 +21,7 @@ import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore";
 import { FIRESTORE_DB } from '../../firebaseConfig';
 import { db } from '../../firebaseConfig';
 import CustomButtonOutline from '../components/CustomButtonOutline';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //const db = getFirestore();
 
@@ -34,7 +36,64 @@ const Login = ({ navigation }) => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
-    const [isAdmin, setIsAdmin] = useState(true)
+    const [isAdmin, setIsAdmin] = useState(false)
+
+    useEffect(() => {
+        checkLoggedIn();
+    }, []);
+
+    const checkLoggedIn = async () => {
+        try {
+            const isLoggedIn = await AsyncStorage.getItem('isLoggedIn')
+
+            if (isLoggedIn === true) {
+                loginUser()
+            }
+        } catch (error) {
+            console.error('Error with login', error)
+        }
+
+    };
+
+    const loginUser = async () => {
+
+        try {
+            const usersRef = collection(db, 'users');
+            const usersSnapshot = await getDocs(usersRef);
+            let isAdmin = false;
+            let userFound = false;
+            let sessionStatus = false;
+
+            if(login === '' || password === ''){
+                Alert.alert('Fill the box');
+            }
+            
+            usersSnapshot.forEach((doc) => {
+                const userData = doc.data();
+                
+                if (login === userData.login && password === userData.password) {
+                    userFound = true;
+                    if (userFound === true) {
+                        sessionStatus = true;
+                        if (userData.isAdmin === true) {
+                            isAdmin = true;
+                            navigation.navigate("AdminDashboard", { login: login });
+                        } else {
+                            navigation.navigate("Dashboard", { login: login });
+                        }
+                    } else {
+                        if (!userFound) {
+                            Alert.alert('No user');
+                        }
+                    }
+                }
+            });
+        } catch (error) {
+            console.error('Error during login:', error);
+        }
+
+    };
+
 
     const signUpPressed = () => {
         navigation.navigate("Register");
@@ -45,39 +104,6 @@ const Login = ({ navigation }) => {
             { text: 'OK', onPress: () => console.log('OK Pressed') },
         ]);
     }
-
-    const loginUser = async () => {
-        try {
-            const usersRef = collection(db, 'users');
-            const usersSnapshot = await getDocs(usersRef);
-            let isAdmin = false;
-            let userFound = false;
-
-            usersSnapshot.forEach((doc) => {
-                const userData = doc.data();
-                if (login === userData.login && password === userData.password) {
-                    userFound = true;
-                    if(userFound === true){
-                        if (userData.isAdmin === true){
-                            isAdmin = true;
-                            navigation.navigate("AdminDashboard", { login: login });
-                        }else{
-                            navigation.navigate("Dashboard", { login: login });
-                        }
-                    } 
-                }
-
-                if(!userFound){
-                    Alert.alert('Error login');
-                }
-
-            });
-        } catch (error) {
-            console.error('Error during login:', error);
-        }
-
-    };
-
 
     return (
         //<DismissKeyboard>
@@ -155,13 +181,3 @@ export default Login;
 
 //F6DFC8
 
-
-/*
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../../firebaseConfig';
-import { FIRESTORE_DB } from '../../firebaseConfig';
-
-const firebaseApp = initializeApp(firebaseConfig);
-const db = FIRESTORE_DB(firebaseApp);  
-
-*/

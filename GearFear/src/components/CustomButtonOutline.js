@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
 
 const CustomButtonOutline = ({ onPress, text, bgcolor, marginVertical, margin, width, textColor }) =>{
 
@@ -24,9 +24,9 @@ const CustomButtonOutline = ({ onPress, text, bgcolor, marginVertical, margin, w
 
     return(
         <View>
-            <TouchableOpacity style={buttonStyles} onPress={onPress}>
+            <Pressable style={buttonStyles} onPress={onPress}>
                 <Text style={textStyles}>{text}</Text>
-            </TouchableOpacity>
+            </Pressable>
         </View>
     );
 };

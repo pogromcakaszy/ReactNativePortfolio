@@ -8,6 +8,7 @@ import Login from '../screens/Login';
 import Register from '../screens/Register';
 import Dashboard from '../screens/Dashboard';
 import AdminDashboard from '../screens/AdminDashboard';
+import Home from '../screens/Home';
 
 const Stack = createStackNavigator();
 
@@ -38,6 +39,11 @@ const AppNavigator = () => {
                 <Stack.Screen
                     component={AdminDashboard}
                     name="AdminDashboard"
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    component={Home}
+                    name="Home"
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>

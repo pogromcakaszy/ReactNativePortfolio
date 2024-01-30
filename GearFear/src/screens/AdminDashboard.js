@@ -33,15 +33,14 @@ const DismissKeyboard = ({ children }) => (
 
 const AdminDashboard = ({ navigation, route }) => {
 
-    const {login} = route.params;
+    const { login } = route.params;
+    let sessionStatus = true;
 
     const ping = () => {
-        Alert.alert('Alert Title', 'My Alert Msg', [
-            { text: 'OK', onPress: () => console.log('OK Pressed') },
-        ]);
+        navigation.navigate("Login");
+        sessionStatus = false;
+        console.log(sessionStatus)
     }
-
-
 
     return (
         <DismissKeyboard>
@@ -51,7 +50,8 @@ const AdminDashboard = ({ navigation, route }) => {
                 style={styles.container}
             >
                 <View style={styles.topBar}>
-                    <Text> Welcome {login} </Text>
+                    <Text> Welcome {login} {console.log(sessionStatus)} </Text>
+                    
                     <Text> Admin box</Text>
                 </View>
 
@@ -84,19 +84,3 @@ const styles = StyleSheet.create({
 });
 
 export default AdminDashboard;
-
-
-//F56476
-
-//F6DFC8
-
-
-/*
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../../firebaseConfig';
-import { FIRESTORE_DB } from '../../firebaseConfig';
-
-const firebaseApp = initializeApp(firebaseConfig);
-const db = FIRESTORE_DB(firebaseApp);  
-
-*/

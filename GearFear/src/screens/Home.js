@@ -25,16 +25,13 @@ import CustomButtonOutline from '../components/CustomButtonOutline';
 const db = getFirestore();
 
 
-const Dashboard = ({ navigation, route }) => {
+const Home = ({ navigation, route }) => {
 
     const { login } = route.params;
 
     const ping = () => {
         navigation.navigate("Login");
-    }
 
-    const ping1 = () => {
-        navigation.navigate("Home",  {login: login});
     }
 
 
@@ -46,13 +43,11 @@ const Dashboard = ({ navigation, route }) => {
             >
 
                 <View style={styles.topBar}>
-                    <Text>Welcome {login}</Text>
-                    <Text>User box</Text>
+                    <Text>Welcome {login} </Text>
+                    <Text>home home</Text>
                 </View>
                 <CustomButtonOutline onPress={ping} text={'LOG OUT'} textColor={'black'} marginVertical={20} width={150} />
-                <CustomButtonOutline onPress={ping1} text={'Next '} textColor={'black'} marginVertical={20} width={150} />
-
-
+                
             </LinearGradient>
     );
 };
@@ -78,7 +73,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Dashboard;
+export default Home;
 
 
 //F56476
