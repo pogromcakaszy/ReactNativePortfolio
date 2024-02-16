@@ -4,10 +4,17 @@
     "slug": "Delayion",
     "version": "1.0.0",
     "orientation": "portrait",
+<<<<<<< HEAD
     "icon": "./assets/img/logo.jpg",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/img/splashScreen.png",
+=======
+    "icon": "./assets/logo.jpg",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splashScreen.png",
+>>>>>>> 4dfee36f9e4e09dfcd0ea8c70db119db33234b82
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
