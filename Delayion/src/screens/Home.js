@@ -9,7 +9,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import RNPickerSelect from 'react-native-picker-select';
 import axios from 'axios';
-import stopId from './stopId';
+import stopId from '../data/stopId';
 
 const apiKey = '5c188f0c-0b40-44ee-9ae1-96b818de8fa5';
 const headers = {
@@ -33,7 +33,7 @@ const Home = () => {
 
   const fetchAllData = async () => {
     const stopIdArray = stopId[selectedStop];
-
+    
     if (stopIdArray) {
       const allDelays = [];
 
@@ -85,6 +85,7 @@ const Home = () => {
                       <View key={delayIndex} style={styles.delayContainer}>
                         <Text style={styles.textTime}>Czas przyjazdu: {delay.theoreticalTime}</Text>
                         <Text style={styles.textTime}>Realny czas: {delay.estimatedTime}</Text>
+                        <Text style={styles.textTime}>Linia: {delay.routeId}</Text>
                         <Text style={styles.textTime}>Kierunek: {delay.headsign}</Text>
                       </View>
                     ))
@@ -160,10 +161,14 @@ const styles = StyleSheet.create({
     },
     inputAndroid: {
       color: 'white',
-      paddingHorizontal: 10,
-      backgroundColor: 'red',
-      borderRadius: 5,
       alignSelf: 'center',
+      borderRadius: 5,
+      fontSize: 20,
+      fontFamily: 'Montserrat',
+      borderColor: 'white',
+      borderWidth: 2,
+      borderRadius: 20,
+      padding: 10,
     },
   },
   loadingText: {
