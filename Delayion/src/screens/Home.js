@@ -90,7 +90,7 @@ const Home = () => {
                       </View>
                     ))
                   ) : (
-                    <Text style={styles.loadingText}>Wygląda na to, że kolejnego nie ma</Text>
+                    <Text style={styles.loadingText}>Wygląda na to, że kolejnego narazie nie ma</Text>
                   )}
                 </View>
               ))}
