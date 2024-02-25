@@ -1,13 +1,11 @@
-# Something about me 👇
-Heey, that's my portfolio (Just in case, if you will be interested what I actually do) :)
+# Sign Go 👇
 
 ============================
 
-    My main skills
-HTML | CSS | JS | REACT-NATIVE
+    Simply project with data about signs, their id, photo, etc. with login auth system.
 
 ============================
 
 
+![393129647_330566266421151_3955647873639001622_n](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/197dba4c-ad3f-43e0-ac1c-bcd17a674e3b)
 
-![itaintmuch](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/5d0a2e1b-769a-4876-b3dc-63d2ff1e06c7)
