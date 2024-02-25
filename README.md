@@ -1,13 +1,23 @@
-# Something about me 👇
-Heey, that's my portfolio (Just in case, if you will be interested what I actually do) :)
+# DELAYION 👇
 
-============================
 
-    My main skills
-HTML | CSS | JS | REACT-NATIVE
+=====================================
 
-============================
+
+![delaygit](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/db7326fb-782f-40d6-8170-66cb359f234d)
 
 
 
-![itaintmuch](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/5d0a2e1b-769a-4876-b3dc-63d2ff1e06c7)
+======================================
+
+
+                      ACTUAL PROJECT BUS DELAY APP
+    DISPLAY BUS DELAYS ACCORDING TO DATA FROM Zarząd Transport Miejskiego w Gdańsku
+
+            I will try to add Favorites bus stations, notifications etc.
+                      
+                      
+
+![delay2](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/4d3149ab-c66b-4d5e-9f61-a37d88c3a9ef)
+
+
