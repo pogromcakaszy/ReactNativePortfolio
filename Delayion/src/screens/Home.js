@@ -85,7 +85,6 @@ const Home = () => {
                       <View key={delayIndex} style={styles.delayContainer}>
                         <Text style={styles.textTime}>Czas przyjazdu: {delay.theoreticalTime}</Text>
                         <Text style={styles.textTime}>Realny czas: {delay.estimatedTime}</Text>
-                        <Text style={styles.textTime}>Linia: {delay.routeId}</Text>
                         <Text style={styles.textTime}>Kierunek: {delay.headsign}</Text>
                       </View>
                     ))
