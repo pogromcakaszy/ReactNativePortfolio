@@ -72,7 +72,7 @@ const Home = () => {
               style={styles.pickerStyle}
             />
             <View style={styles.thirdContainer}>
-              <Text style={styles.textContainer}>Odjazdy z przystanku</Text>
+              <Text style={styles.textContainer}>Odjazdy z przystanku: </Text>
               {delays.map(({ delays: stopDelays }, index) => (
                 stopDelays.sort((a, b) => {
                   const timeA = new Date(a.estimatedTime);
