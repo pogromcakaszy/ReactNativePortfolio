@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Dimensions,
+  Image,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import RNPickerSelect from "react-native-picker-select";
@@ -34,7 +35,6 @@ const Home = () => {
       clearInterval(intervalId);
     };
   }, [selectedStop]);
-
 
   const fetchAllData = async () => {
     const stopIdArray = stopId[selectedStop];
@@ -71,6 +71,7 @@ const Home = () => {
             items={Object.keys(stopId).map((stopName) => ({
               label: stopName,
               value: stopName,
+              color: "black",
             }))}
             style={styles.pickerStyle}
           />
@@ -90,23 +91,46 @@ const Home = () => {
                   {Array.isArray(stopDelays) && stopDelays.length > 0 ? (
                     stopDelays.map((delay, delayIndex) => (
                       <View key={delayIndex} style={styles.delayContainer}>
-                        <Text style={styles.textTime}>
-                          Czas przyjazdu: {delay.theoreticalTime}
-                        </Text>
-                        <Text style={styles.textTime}>
-                          Realny czas: {delay.estimatedTime}
-                        </Text>
-                        <Text style={styles.textTime}>
-                          Kierunek: {delay.headsign}
-                        </Text>
-                        <Text style={styles.textTime}>
-                          Linia: {getRouteName(delay.routeId)}
-                        </Text>
+                        <View style={styles.column30}>
+                          <Image
+                            source={require("../../assets/img/time.png")}
+                            style={styles.img}
+                          />
+                          <Image
+                            source={require("../../assets/img/hurry.png")}
+                            style={styles.img}
+                          />
+                          <Image
+                            source={require("../../assets/img/city.png")}
+                            style={styles.img}
+                          />
+                          <Image
+                            source={require("../../assets/img/bus.png")}
+                            style={styles.img}
+                          />
+                        </View>
+                        <View style={styles.column70}>
+                          <Text style={styles.textTime}>
+                            Czas przyjazdu: {delay.theoreticalTime}
+                          </Text>
+
+                          <Text style={styles.textTime}>
+                            Realny czas: {delay.estimatedTime}
+                          </Text>
+
+                          <Text style={styles.textTime}>
+                            Kierunek: {delay.headsign}
+                          </Text>
+
+                          <Text style={styles.textTime}>
+                            Linia: {getRouteName(delay.routeId)}
+                          </Text>
+                        </View>
                       </View>
                     ))
                   ) : (
                     <Text style={styles.loadingText}>
-                      Wygląda na to, że nic narazie nie ma
+                      Wygląda na to, że nic więcej nie ma
                     </Text>
                   )}
                 </View>
@@ -131,22 +155,34 @@ const styles = StyleSheet.create({
     backgroundColor: "#232323",
     margin: 20,
   },
-    midBlock: {
+  column30: {
+    flex: 0.1,
+  },
+  column70: {
+    flex: 0.9,
+  },
+  midBlock: {
     backgroundColor: "#111111",
   },
   textContainer: {
-    textAlign: 'center',
+    textAlign: "center",
     color: "white",
     fontSize: 30,
     fontFamily: "Montserrat",
     margin: 10,
   },
+  img: {
+    width: 20,
+    height: 20,
+    margin: 9,
+    //resizeMode: "contain",
+  },
   delayContainer: {
+    flexDirection: "row",
     backgroundColor: "#343434",
     borderRadius: 8,
     padding: 10,
-    marginVertical: 10,
-    marginHorizontal: 10,
+    margin: 10,
   },
   delayHeadSignText: {
     color: "red",
@@ -157,6 +193,8 @@ const styles = StyleSheet.create({
     color: "white",
     fontFamily: "Montserrat",
     fontSize: 15,
+    textAlign: "auto",
+    margin: 10,
   },
   pickerStyle: {
     inputIOS: {
