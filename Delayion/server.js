@@ -1,6 +1,17 @@
+/*
 const express = require('express');
 const app = express();
 const port = 8081;
+
+const cors = require("cors");
+
+app.use(cors(
+  {
+    origin:"http://localhost:8081",
+    methods:["GET","POST"]
+  }
+))
+
 
 app.get('/api/data', async (req, res) => {
     try {
@@ -31,3 +42,4 @@ app.get('/api/data', async (req, res) => {
 app.listen(port, () => {
     console.log(`Serwer działa na https://localhost:${port}`);
 });
+*/
