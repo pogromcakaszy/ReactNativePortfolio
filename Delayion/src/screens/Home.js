@@ -36,6 +36,7 @@ const Home = () => {
     };
   }, [selectedStop]);
 
+
   const fetchAllData = async () => {
     const stopIdArray = stopId[selectedStop];
 
@@ -76,7 +77,6 @@ const Home = () => {
             style={styles.pickerStyle}
           />
         </View>
-
         <View style={styles.midBlock}>
           <Text style={styles.textContainer}>Odjazdy z przystanku </Text>
           {delays.map(
