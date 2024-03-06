@@ -12,7 +12,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import RNPickerSelect from "react-native-picker-select";
 import axios from "axios";
 import stopId from "../data/stopId";
-import routeId, { getRouteName } from "../data/routeId"; // Import the getRouteName function
+import routeId, { getRouteName } from "../data/routeId";
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const apiKey = "5c188f0c-0b40-44ee-9ae1-96b818de8fa5";
 const headers = {
