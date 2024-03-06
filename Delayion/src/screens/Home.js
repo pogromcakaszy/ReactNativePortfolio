@@ -7,6 +7,7 @@ import {
   Dimensions,
   Image,
   ScrollView,
+  FlatList,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import RNPickerSelect from "react-native-picker-select";
@@ -23,6 +24,8 @@ const headers = {
 
 const Home = () => {
   const screenHeight = Dimensions.get("window").height;
+  
+  DropDownPicker.setListMode("MODAL");
 
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
   const [selectedStop, setSelectedStop] = useState(Object.keys(stopId)[0]);
@@ -85,6 +88,12 @@ const Home = () => {
             setOpen={setOpen}
             maxHeight={500}
             searchable={true}
+            textStyle={{
+              fontSize: 20,
+              fontFamily: "Montserrat",
+              textAlign: 'center',
+            }}
+            theme="DARK"
           />
         </View>
         <View style={styles.midBlock}>
@@ -244,15 +253,3 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
-
-/*
-          <RNPickerSelect
-            onValueChange={(value) => setSelectedStop(value)}
-            items={Object.keys(stopId).map((stopName) => ({
-              label: stopName,
-              value: stopName,
-              color: "black",
-            }))}
-            style={styles.pickerStyle}
-          />
-*/
