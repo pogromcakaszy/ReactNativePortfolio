@@ -24,7 +24,7 @@ const headers = {
 
 const Home = () => {
   const screenHeight = Dimensions.get("window").height;
-  
+
   DropDownPicker.setListMode("MODAL");
 
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
@@ -91,9 +91,12 @@ const Home = () => {
             textStyle={{
               fontSize: 20,
               fontFamily: "Montserrat",
-              textAlign: 'center',
+              textAlign: "center",
             }}
             theme="DARK"
+            modalProps={{
+              animationType: "fade",
+            }}
           />
         </View>
         <View style={styles.midBlock}>
@@ -148,13 +151,13 @@ const Home = () => {
                       </View>
                     ))
                   ) : (
-                    <Text style={styles.loadingText}></Text>
+                    <Text></Text>
                   )}
                 </View>
               )
             )
           )}
-          <Text style={styles.loadingText}>nic wiecej nie ma</Text>
+          <Text style={styles.loadingText}>Narazie nie ma nic więcej 😃</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -215,10 +218,6 @@ const styles = StyleSheet.create({
     textAlign: "auto",
     margin: 10,
   },
-  loadingText: {
-    textAlign: "center",
-    alignContent: "center",
-  },
   pickerStyle: {
     inputIOS: {
       color: "white",
@@ -249,6 +248,8 @@ const styles = StyleSheet.create({
   loadingText: {
     color: "white",
     fontFamily: "Montserrat",
+    textAlign: 'center',
+    fontSize: 15,
   },
 });
 
