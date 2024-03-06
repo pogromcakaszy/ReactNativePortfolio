@@ -36,7 +36,6 @@ const Home = () => {
     };
   }, [selectedStop]);
 
-
   const fetchAllData = async () => {
     const stopIdArray = stopId[selectedStop];
 
@@ -129,10 +128,9 @@ const Home = () => {
                       </View>
                     ))
                   ) : (
-                    <Text style={styles.loadingText}>
-                      Wygląda na to, że nic więcej nie ma
-                    </Text>
+                    <Text style={styles.loadingText}></Text>
                   )}
+                  <Text style={styles.loadingText}> Narazie nic więcej nie ma</Text>
                 </View>
               )
             )
@@ -195,6 +193,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: "auto",
     margin: 10,
+  },
+  loadingText: {
+    textAlign: 'center',
+    alignContent: 'center',
   },
   pickerStyle: {
     inputIOS: {
