@@ -4,16 +4,16 @@ import {
   Text,
   View,
   TouchableOpacity,
-  ScrollView,
   Dimensions,
   Image,
+  ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import RNPickerSelect from "react-native-picker-select";
 import axios from "axios";
 import stopId from "../data/stopId";
 import routeId, { getRouteName } from "../data/routeId";
-import DropDownPicker from 'react-native-dropdown-picker';
+import DropDownPicker from "react-native-dropdown-picker";
 
 const apiKey = "5c188f0c-0b40-44ee-9ae1-96b818de8fa5";
 const headers = {
@@ -27,6 +27,8 @@ const Home = () => {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
   const [selectedStop, setSelectedStop] = useState(Object.keys(stopId)[0]);
   const [delays, setDelays] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
 
   useEffect(() => {
     fetchAllData();
@@ -67,14 +69,22 @@ const Home = () => {
       <ScrollView style={styles.scrollView}>
         <View style={styles.mainBlock}>
           <Text style={styles.textContainer}>Wybierz przystanek:</Text>
-          <RNPickerSelect
+
+          <DropDownPicker
+            value={selectedStop}
+            open={open}
             onValueChange={(value) => setSelectedStop(value)}
             items={Object.keys(stopId).map((stopName) => ({
               label: stopName,
               value: stopName,
               color: "black",
             }))}
-            style={styles.pickerStyle}
+            setValue={setSelectedStop}
+            placeholder="Wyszukaj przystanek"
+            searchPlaceholder="Wyszukaj przystanek"
+            setOpen={setOpen}
+            maxHeight={500}
+            searchable={true}
           />
         </View>
         <View style={styles.midBlock}>
@@ -131,11 +141,11 @@ const Home = () => {
                   ) : (
                     <Text style={styles.loadingText}></Text>
                   )}
-                  <Text style={styles.loadingText}> Narazie nic więcej nie ma</Text>
                 </View>
               )
             )
           )}
+          <Text style={styles.loadingText}>nic wiecej nie ma</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -153,6 +163,7 @@ const styles = StyleSheet.create({
   mainBlock: {
     backgroundColor: "#232323",
     margin: 20,
+    zIndex: 1,
   },
   column30: {
     flex: 0.1,
@@ -196,8 +207,8 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   loadingText: {
-    textAlign: 'center',
-    alignContent: 'center',
+    textAlign: "center",
+    alignContent: "center",
   },
   pickerStyle: {
     inputIOS: {
@@ -233,3 +244,15 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
+
+/*
+          <RNPickerSelect
+            onValueChange={(value) => setSelectedStop(value)}
+            items={Object.keys(stopId).map((stopName) => ({
+              label: stopName,
+              value: stopName,
+              color: "black",
+            }))}
+            style={styles.pickerStyle}
+          />
+*/
