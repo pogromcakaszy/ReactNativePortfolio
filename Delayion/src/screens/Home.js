@@ -158,6 +158,8 @@ const Home = () => {
             )
           )}
           <Text style={styles.loadingText}>Narazie nie ma nic więcej 😃</Text>
+          <Text style={styles.disclaimer}>Dane mają charakter orientacyjny{"\n"} Twórca nie ponosi odpowiedzialności za prawdziwość danych</Text>
+
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -199,6 +201,14 @@ const styles = StyleSheet.create({
     height: 20,
     margin: 9,
     //resizeMode: "contain",
+  },
+  disclaimer:{
+    color: "crimson",
+    fontFamily: "Montserrat",
+    textAlign: 'center',
+    fontSize: 15,
+    margin: 10,
+
   },
   delayContainer: {
     flexDirection: "row",
@@ -247,6 +257,7 @@ const styles = StyleSheet.create({
     },
   },
   loadingText: {
+    margin: 10,
     color: "white",
     fontFamily: "Montserrat",
     textAlign: 'center',
