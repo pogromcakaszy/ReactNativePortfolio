@@ -182,6 +182,7 @@ const styles = StyleSheet.create({
   },
   column70: {
     flex: 0.9,
+    
   },
   midBlock: {
     backgroundColor: "#111111",
