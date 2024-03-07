@@ -14,7 +14,6 @@
                       ACTUAL PROJECT BUS DELAY APP
     DISPLAY BUS DELAYS ACCORDING TO DATA FROM Zarząd Transport Miejskiego w Gdańsku
 
-            I will try to add Favorites bus stations, notifications etc.
                       
                       
 
