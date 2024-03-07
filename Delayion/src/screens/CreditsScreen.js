@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
   FlatList,
+  Linking,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import RNPickerSelect from "react-native-picker-select";
@@ -22,6 +23,10 @@ const headers = {
   Authorization: `Bearer ${apiKey}`,
   "Content-Type": "application/json",
 };
+
+const handlePress = () =>{
+    Linking.openURL('https://www.ko-fi.com/kacperczech');
+}
 
 const Credits = () => {
   const screenHeight = Dimensions.get("window").height;
@@ -42,19 +47,20 @@ const Credits = () => {
           Aplikacja została opracowana przez Kacper Czech
         </Text>
 
+
+        <Text style={styles.textContainer1}>
+          Przydała Ci się moja praca?{"\n"} Wesprzyj mnie!
+        </Text>
+        <TouchableOpacity onPress={handlePress} style={styles.kofiButton}>
+          <Image
+            source={require("../../assets/img/kofi1.png")}
+            style={styles.kofi}
+          />
+        </TouchableOpacity>
         <Text style={styles.disclaimer1}>
           Dane mają charakter orientacyjny {"\n"}Twórca nie ponosi
           odpowiedzialności{"\n"} za prawdziwość danych
         </Text>
-        <Text style={styles.textContainer}>
-          Przydała Ci się moja praca? Wesprzyj mnie
-        </Text>
-        <TouchableOpacity>
-          <Image
-            source={require("../../assets/img/kofi.png")}
-            style={styles.kofi}
-          />
-        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );

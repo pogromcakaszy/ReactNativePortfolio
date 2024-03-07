@@ -22,10 +22,21 @@ const styles = StyleSheet.create({
   midBlock: {
     backgroundColor: "#111111",
   },
+  kofiButton:{
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   textContainer: {
     textAlign: "center",
     color: "white",
     fontSize: 30,
+    fontFamily: "Montserrat",
+    margin: 10,
+  },
+  textContainer1: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 20,
     fontFamily: "Montserrat",
     margin: 10,
   },
@@ -73,6 +84,8 @@ const styles = StyleSheet.create({
   kofi: {
     width: 300,
     height:90,
+    borderRadius: 20,
+
   },
   textTime: {
     color: "white",
