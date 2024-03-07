@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
     width: 300,
     height:90,
     borderRadius: 20,
-
   },
   textTime: {
     color: "white",
