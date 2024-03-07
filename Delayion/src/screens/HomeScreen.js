@@ -15,6 +15,7 @@ import axios from "axios";
 import stopId from "../data/stopId";
 import routeId, { getRouteName } from "../data/routeId";
 import DropDownPicker from "react-native-dropdown-picker";
+import styles from "../styles/styles";
 
 const apiKey = "5c188f0c-0b40-44ee-9ae1-96b818de8fa5";
 const headers = {
@@ -158,111 +159,14 @@ const Home = () => {
             )
           )}
           <Text style={styles.loadingText}>Narazie nie ma nic więcej 😃</Text>
-          <Text style={styles.disclaimer}>Dane mają charakter orientacyjny{"\n"} Twórca nie ponosi odpowiedzialności za prawdziwość danych</Text>
-
+          <Text style={styles.disclaimer}>
+            Dane mają charakter orientacyjny{"\n"} Twórca nie ponosi
+            odpowiedzialności za prawdziwość danych
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#232323",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "stretch",
-    flex: 1,
-  },
-  mainBlock: {
-    backgroundColor: "#232323",
-    margin: 20,
-    zIndex: 1,
-  },
-  column30: {
-    flex: 0.1,
-  },
-  column70: {
-    flex: 0.9,
-    
-  },
-  midBlock: {
-    backgroundColor: "#111111",
-  },
-  textContainer: {
-    textAlign: "center",
-    color: "white",
-    fontSize: 30,
-    fontFamily: "Montserrat",
-    margin: 10,
-  },
-  img: {
-    width: 20,
-    height: 20,
-    margin: 9,
-    //resizeMode: "contain",
-  },
-  disclaimer:{
-    color: "crimson",
-    fontFamily: "Montserrat",
-    textAlign: 'center',
-    fontSize: 15,
-    margin: 10,
-
-  },
-  delayContainer: {
-    flexDirection: "row",
-    backgroundColor: "#343434",
-    borderRadius: 8,
-    padding: 10,
-    margin: 10,
-  },
-  delayHeadSignText: {
-    color: "red",
-    fontSize: 30,
-    fontFamily: "Montserrat",
-  },
-  textTime: {
-    color: "white",
-    fontFamily: "Montserrat",
-    fontSize: 15,
-    textAlign: "auto",
-    margin: 10,
-  },
-  pickerStyle: {
-    inputIOS: {
-      color: "white",
-      alignSelf: "center",
-      borderRadius: 5,
-      fontSize: 20,
-      fontFamily: "Montserrat",
-      borderColor: "white",
-      borderWidth: 2,
-      borderRadius: 10,
-      padding: 10,
-    },
-    placeholder: {
-      color: "white",
-    },
-    inputAndroid: {
-      color: "white",
-      alignSelf: "center",
-      borderRadius: 5,
-      fontSize: 20,
-      fontFamily: "Montserrat",
-      borderColor: "white",
-      borderWidth: 2,
-      borderRadius: 20,
-      padding: 10,
-    },
-  },
-  loadingText: {
-    margin: 10,
-    color: "white",
-    fontFamily: "Montserrat",
-    textAlign: 'center',
-    fontSize: 15,
-  },
-});
 
 export default Home;
