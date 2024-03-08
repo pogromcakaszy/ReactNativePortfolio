@@ -1,21 +1,15 @@
 {
-  "cli": {
-    "version": ">= 7.3.0",
-    "requireCommit": true
-  },
   "build": {
     "development": {
       "developmentClient": true,
       "distribution": "internal"
     },
-    "profiles": {
-    },
     "preview": {
-      "distribution": "internal",
+      "distribution": "internal"
     },
     "production": {}
   },
-  "submit": {
-    "production": {}
+  "cli": {
+    "requireCommit": true
   }
 }
