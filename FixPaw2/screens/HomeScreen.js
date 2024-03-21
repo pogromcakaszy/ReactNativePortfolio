@@ -2,6 +2,11 @@ import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
+
+  async function getData(){
+
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome to Home Screen!</Text>

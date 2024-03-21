@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import axios from 'axios';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Tutaj możesz dodać logikę autentykacji, np. wywołując odpowiednie API
-    if (email === 'a@a.a' && password === 'aaa') {
-      // Tutaj można ustawić stan aplikacji, że użytkownik jest zalogowany
-      Alert.alert('Success', 'Login Successful');
-      navigation.navigate('Home');
-    } else {
-      Alert.alert('Error', 'Invalid email or password');
+  const handleLogin = async () => {
+
+    console.log(email,password);
+
+    const userData={
+      email:email,
+      password
     }
+
+  axios.post("http://192.168.1.126:5001/login", userData).then(res =>{
+    console.log(res.data);
+    if(res.data.status == 'ok'){
+      Alert.alert("loged in");
+      navigation.navigate('Home');
+    }
+  });
+
   };
 
   return (

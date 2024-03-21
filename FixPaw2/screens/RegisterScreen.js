@@ -7,14 +7,12 @@ const RegisterScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
-
   const handleRegister = async () => {
 
     const userData={
         email:email,
         password
-    }
+    };
 
     axios.post("http://192.168.1.126:5001/register", userData).then((res)=>console.log(res.data).catch(e=>console.log(e)));
 
