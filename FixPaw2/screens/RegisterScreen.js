@@ -26,9 +26,9 @@ const RegisterScreen = ({ navigation }) => {
       if(res.data.status=="ok"){
         Alert.alert("Register succed")
         navigation.navigate('Login');
-      }});
-
-
+      }else if(res.data.data=="User already exists"){
+        Alert.alert("User already exists")
+    }});
   };
 
   return (
