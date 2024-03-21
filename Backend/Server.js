@@ -4,7 +4,6 @@ const mongoose=require("mongoose");
 app.use(express.json());
 const bcrypt = require("bcryptjs")
 
-
 const mongourl = 'mongodb+srv://admin:admin@fixpaw.dmszyc6.mongodb.net/?retryWrites=true&w=majority&appName=FixPaw'
 
 mongoose
@@ -25,9 +24,9 @@ app.get('/',(req,res) =>{
 })
 
 app.post('/register',async(req,res)=>{
-    const {email,password} = req.body;
+    const {username,email,firstName,lastName,phoneNumber,password} = req.body;
 
-    const oldUser = await User.findOne({email:email});
+    const oldUser = await User.findOne({email:email}) || User.findOne({username:username});
 
     if(oldUser){
         return res.send({data:"User already exists"});
@@ -37,7 +36,11 @@ app.post('/register',async(req,res)=>{
 
     try{
         await User.create({
+            username: username,
             email:email,
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber:phoneNumber,
             password:password
         })
         res.send({status:"ok", data:"User created"});

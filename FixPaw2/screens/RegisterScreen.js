@@ -1,31 +1,68 @@
-import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
-import axios from 'axios';
+import React, { useState } from "react";
+import { View, TextInput, Button, StyleSheet, Alert, TouchableWithoutFeedback, Keyboard } from "react-native";
+import axios from "axios";
 
-
-const RegisterScreen = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const RegisterScreen = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleRegister = async () => {
-
-    const userData={
-        email:email,
-        password
+    const userData = {
+      username: username,
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      password,
     };
 
-    axios.post("http://192.168.1.126:5001/register", userData).then((res)=>console.log(res.data).catch(e=>console.log(e)));
-
-  }
+    axios
+      .post("http://192.168.1.126:5001/register", userData)
+      .then((res) => console.log(res.data).console.log(e));
+  };
 
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        onChangeText={setUsername}
+        value={username}
+        autoCapitalize="none"
+      />
       <TextInput
         style={styles.input}
         placeholder="Email"
         onChangeText={setEmail}
         value={email}
         keyboardType="email-address"
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="First name"
+        onChangeText={setFirstName}
+        value={firstName}
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Last name"
+        onChangeText={setLastName}
+        value={lastName}
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Phone"
+        onChangeText={setPhoneNumber}
+        value={phoneNumber}
+        keyboardType="numeric"
         autoCapitalize="none"
       />
       <TextInput
@@ -37,20 +74,21 @@ const RegisterScreen = ({navigation}) => {
       />
       <Button title="Register" onPress={handleRegister} />
     </View>
+    </TouchableWithoutFeedback>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 20,
   },
   input: {
     height: 40,
-    width: '100%',
-    borderColor: 'gray',
+    width: "100%",
+    borderColor: "gray",
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
