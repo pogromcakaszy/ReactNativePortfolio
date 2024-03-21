@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require('cors');
 app.use(express.json());
 const bcrypt = require("bcryptjs");
+app.use(cors());
 
 const mongourl = 'mongodb+srv://admin:admin@fixpaw.dmszyc6.mongodb.net/?retryWrites=true&w=majority&appName=FixPaw';
 
@@ -26,11 +28,10 @@ app.get('/', (req, res) => {
 app.post('/register', async (req, res) => {
     const { username, email, firstName, lastName, phoneNumber, password } = req.body;
 
-    const oldUser = await User.findOne({ email: email }) ;
+    const existUser = await User.findOne({ email: email });
+    const existUser2 = await User.findOne({ username: username });
 
-    //|| User.findOne({ username: username })
-
-    if (oldUser) {
+    if (existUser || existUser2) {
         return res.send({ data: "User already exists" });
     }
 

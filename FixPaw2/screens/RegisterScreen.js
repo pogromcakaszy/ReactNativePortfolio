@@ -22,7 +22,13 @@ const RegisterScreen = ({ navigation }) => {
 
     axios
       .post("http://192.168.1.126:5001/register", userData)
-      .then((res) => console.log(res.data).console.log(e));
+      .then((res) => {console.log(res.data)
+      if(res.data.status=="ok"){
+        Alert.alert("Register succed")
+        navigation.navigate('Login');
+      }});
+
+
   };
 
   return (
