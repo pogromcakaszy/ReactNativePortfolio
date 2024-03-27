@@ -1,22 +1,17 @@
 # DELAYION 👇
 
+FINAL BUILD IS IN SEPARATE REPO
 
 =====================================
 
 
-![delaygit](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/db7326fb-782f-40d6-8170-66cb359f234d)
-
-
-
-======================================
-
-
-                      ACTUAL PROJECT BUS DELAY APP
+                      FINISHED PROJECT BUS DELAY APP IN NEW REPO
     DISPLAY BUS DELAYS ACCORDING TO DATA FROM Zarząd Transport Miejskiego w Gdańsku
 
                       
                       
+![delayion](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/5d8c0739-dc87-4d91-8d80-05cb4435766d)
 
-![delay2](https://github.com/pogromcakaszy/ReactNativePortfolio/assets/104156848/4d3149ab-c66b-4d5e-9f61-a37d88c3a9ef)
+
 
 
