@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation, route }) => {
+  const [token, setToken] = useState('');
+  const { email, username, firstName } = route.params;
 
-  async function getData(){
-
-  }
+  useEffect(() => {
+    if (route.params && route.params.token) {
+      AsyncStorage.setItem('token', route.params.token);
+    }
+  }, [route.params]);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to Home Screen!</Text>
-      <Button
-        title="Logout"
-        onPress={() => navigation.navigate('Login')}
-      />
+      <Text style={styles.text}>Welcome, {firstName}!</Text>
+      <Text style={styles.text}>Your email: {email}</Text>
+      <Text style={styles.text}>Your username: {username}</Text>
+
+      <Button title="Logout" onPress={() => navigation.navigate('Login')} />
     </View>
   );
 };

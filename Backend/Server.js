@@ -5,8 +5,12 @@ const cors = require('cors');
 app.use(express.json());
 const bcrypt = require("bcryptjs");
 app.use(cors());
+const jwt = require("jsonwebtoken");
 
 const mongourl = 'mongodb+srv://admin:admin@fixpaw.dmszyc6.mongodb.net/?retryWrites=true&w=majority&appName=FixPaw';
+
+//Will be hidden soon
+const JWT_SECRET = 'abcdefg123'
 
 mongoose
     .connect(mongourl)
@@ -62,18 +66,35 @@ app.post('/login', async (req, res) => {
             return res.status(401).json({ message: "Invalid email or password" });
         }
 
-        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if(await bcrypt.compare(password, user.password)){
+            const token = jwt.sign({email:user.email}, JWT_SECRET);
+
+            if(res.status(201)){
+                return res.send({ status:"OK", data: token, email: email, username: user.username, firstName: user.firstName, lastName: user.lastName})
+            }else{
+                return res.send({ error:"error"});
+            }
+        }
 
         if (!isPasswordValid) {
             return res.status(401).json({ message: "Invalid email or password" });
         }
 
-        res.send({ status: "ok", data: "User logged" });
+        res.send({ status: "ok"});
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ message: "Server error" });
     }
 });
+
+app.get("/getUser"), async(req,res) =>{
+    try{
+        const data = await User.find({});
+        res.send({status: "ok", data: data});
+    }catch(error){
+        return res.send({error: error})
+    }
+}
 
 app.listen(5001, () => {
     console.log("Server on");
