@@ -66,13 +66,13 @@ app.post('/login', async (req, res) => {
             return res.status(401).json({ message: "Invalid email or password" });
         }
 
-        if(await bcrypt.compare(password, user.password)){
-            const token = jwt.sign({email:user.email}, JWT_SECRET);
+        if (await bcrypt.compare(password, user.password)) {
+            const token = jwt.sign({ email: user.email }, JWT_SECRET);
 
-            if(res.status(201)){
-                return res.send({ status:"OK", data: token, email: email, username: user.username, firstName: user.firstName, lastName: user.lastName})
-            }else{
-                return res.send({ error:"error"});
+            if (res.status(201)) {
+                return res.send({ status: "OK", data: token, email: email, username: user.username, firstName: user.firstName, lastName: user.lastName })
+            } else if (res.status(401)) {
+                return res.send({ message: "Invalid email or password" });
             }
         }
 
@@ -80,19 +80,28 @@ app.post('/login', async (req, res) => {
             return res.status(401).json({ message: "Invalid email or password" });
         }
 
-        res.send({ status: "ok"});
+        res.send({ status: "ok" });
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ message: "Server error" });
     }
 });
 
-app.get("/getUser"), async(req,res) =>{
-    try{
-        const data = await User.find({});
-        res.send({status: "ok", data: data});
-    }catch(error){
-        return res.send({error: error})
+app.post("/userData"), async (req, res) => {
+    const { token } = req.body;
+    try {
+        const user = jwt.verify(token, JWT_SECRET)
+        const userEmail = user.email;
+
+        User.findOne({ email: userEmail }).then(data => {
+            if (data) {
+                res.send({ status: "ok", data: data });
+            } else {
+                res.status(404).json({ message: "User not found" });
+            }
+        })
+    } catch (error) {
+        return res.send({ error: error })
     }
 }
 
