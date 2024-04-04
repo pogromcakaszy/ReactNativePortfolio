@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-    const { username, email, firstName, lastName, phoneNumber, password } = req.body;
+    const { username, email, firstName, lastName, phoneNumber, password, rank } = req.body;
 
     const existUser = await User.findOne({ email: email });
     const existUser2 = await User.findOne({ username: username });
@@ -41,6 +41,8 @@ app.post('/register', async (req, res) => {
 
     const encryptedPassword = await bcrypt.hash(password, 10);
 
+    const userRank = 1;
+
     try {
         await User.create({
             username: username,
@@ -48,7 +50,8 @@ app.post('/register', async (req, res) => {
             firstName: firstName,
             lastName: lastName,
             phoneNumber: phoneNumber,
-            password: encryptedPassword
+            password: encryptedPassword,
+            rank: userRank
         });
         res.send({ status: "ok", data: "User created" });
     } catch (error) {
@@ -70,10 +73,11 @@ app.post('/login', async (req, res) => {
             const token = jwt.sign({ email: user.email }, JWT_SECRET);
 
             if (res.status(201)) {
-                return res.send({ status: "OK", data: token, email: email, username: user.username, firstName: user.firstName, lastName: user.lastName })
+                return res.send({ status: "OK", data: token, email: email, username: user.username, firstName: user.firstName, lastName: user.lastName, rank: user.rank })
             } else if (res.status(401)) {
                 return res.send({ message: "Invalid email or password" });
             }
+
         }
 
         if (!isPasswordValid) {

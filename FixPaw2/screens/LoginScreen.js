@@ -31,7 +31,7 @@ const LoginScreen = ({ }) => {
 
     const userData = {
       email: email,
-      password
+      password,
     }
 
     axios
@@ -47,12 +47,29 @@ const LoginScreen = ({ }) => {
             firstName: res.data.firstName
           }));
           AsyncStorage.setItem('isLoggedIn', 'true');
-          navigation.navigate('Profile', {
-            token: res.data.data,
-            email: res.data.email,
-            username: res.data.username,
-            firstName: res.data.firstName
-        });
+          if(res.data.rank == 3){
+            navigation.navigate('Admin', {
+              token: res.data.data,
+              email: res.data.email,
+              username: res.data.username,
+              firstName: res.data.firstName
+          });
+          }else if(res.data.rank == 2){
+            navigation.navigate('Vet', {
+              token: res.data.data,
+              email: res.data.email,
+              username: res.data.username,
+              firstName: res.data.firstName
+          })
+          }
+          else(
+            navigation.navigate('Profile', {
+              token: res.data.data,
+              email: res.data.email,
+              username: res.data.username,
+              firstName: res.data.firstName
+          }
+          ));
         }
       })
       .catch(error => {
