@@ -12,7 +12,7 @@ const ProfileScreen = ({ navigation, route }) => {
                 const storedToken = await AsyncStorage.getItem('token');
                 setUserToken(storedToken);
                 const storedUserData = await AsyncStorage.getItem('userData');
-                if(storedUserData){
+                if (storedUserData) {
                     const userData = JSON.parse(storedUserData)
                     setUserData(userData)
                 }
@@ -38,11 +38,11 @@ const ProfileScreen = ({ navigation, route }) => {
             <Text style={styles.text}>Welcome, {userData?.firstName}!</Text>
             <Text style={styles.text}>Your email: {userData?.email}</Text>
             <Text style={styles.text}>Your username: {userData?.username}</Text>
-            <Button title="Home" onPress={() => navigation.navigate('Home',{
+            <Button title="Home" onPress={() => navigation.navigate('Home', {
                 userData,
             })} />
             <Button title="Logout" onPress={handleLogout} />
-            </View>
+        </View>
     );
 };
 

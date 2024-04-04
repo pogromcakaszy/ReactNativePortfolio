@@ -9,20 +9,28 @@ const LoginScreen = ({ }) => {
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
 
-  const checkToken = async () =>{
-    try{
+  const checkToken = async () => {
+    try {
       const token = await AsyncStorage.getItem('token')
       const isLogged = await AsyncStorage.getItem('isLoggedIn')
+      const userData = await AsyncStorage.getItem('userData')
 
-      if (isLogged == 'true' && token !== null) {
-        navigation.navigate('Profile');
+      if (isLogged == 'true' && token !== null && userData) {
+        const { rank } = JSON.parse(userData);
+        if (rank == '3') {
+          navigation.navigate('Admin', userData);
+        } else if (rank == '2') {
+          navigation.navigate('Vet', userData);
+        } else {
+          navigation.navigate('Profile', userData);
+        }
       }
-    }catch(error){
+    } catch (error) {
       console.log('Missing token ', error);
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     checkToken();
   }, []);
 
@@ -42,40 +50,46 @@ const LoginScreen = ({ }) => {
           Alert.alert("Logged in");
           AsyncStorage.setItem('token', res.data.data);
           AsyncStorage.setItem('userData', JSON.stringify({
+            rank: res.data.rank,
             email: res.data.email,
             username: res.data.username,
             firstName: res.data.firstName
           }));
           AsyncStorage.setItem('isLoggedIn', 'true');
-          if(res.data.rank == 3){
+          if (res.data.rank == 3) {
+            AsyncStorage.setItem('rank', res.data.data);
             navigation.navigate('Admin', {
               token: res.data.data,
               email: res.data.email,
               username: res.data.username,
               firstName: res.data.firstName
-          });
-          }else if(res.data.rank == 2){
+            });
+          } else if (res.data.rank == 2) {
+            AsyncStorage.setItem('rank', JSON.stringify(res.data.data));
+            console.log(res.data.rank);
             navigation.navigate('Vet', {
               token: res.data.data,
               email: res.data.email,
               username: res.data.username,
               firstName: res.data.firstName
-          })
-          }
-          else(
+            })
+          } else {
+            AsyncStorage.setItem('rank', JSON.stringify(res.data.data));
+            console.log(res.data.rank);
             navigation.navigate('Profile', {
               token: res.data.data,
               email: res.data.email,
               username: res.data.username,
               firstName: res.data.firstName
+            });
           }
-          ));
         }
       })
       .catch(error => {
         console.error('Error:', error);
       });
   };
+
 
   return (
     <View style={styles.container}>

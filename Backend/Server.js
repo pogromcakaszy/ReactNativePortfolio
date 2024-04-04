@@ -71,16 +71,8 @@ app.post('/login', async (req, res) => {
 
         if (await bcrypt.compare(password, user.password)) {
             const token = jwt.sign({ email: user.email }, JWT_SECRET);
-
-            if (res.status(201)) {
-                return res.send({ status: "OK", data: token, email: email, username: user.username, firstName: user.firstName, lastName: user.lastName, rank: user.rank })
-            } else if (res.status(401)) {
-                return res.send({ message: "Invalid email or password" });
-            }
-
-        }
-
-        if (!isPasswordValid) {
+            return res.send({ status: "OK", data: token, email: email, username: user.username, firstName: user.firstName, lastName: user.lastName, rank: user.rank });
+        } else {
             return res.status(401).json({ message: "Invalid email or password" });
         }
 
@@ -91,10 +83,10 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.post("/userData"), async (req, res) => {
+app.post("/userData", async (req, res) => {
     const { token } = req.body;
     try {
-        const user = jwt.verify(token, JWT_SECRET)
+        const user = jwt.verify(token, JWT_SECRET);
         const userEmail = user.email;
 
         User.findOne({ email: userEmail }).then(data => {
@@ -103,11 +95,11 @@ app.post("/userData"), async (req, res) => {
             } else {
                 res.status(404).json({ message: "User not found" });
             }
-        })
+        });
     } catch (error) {
-        return res.send({ error: error })
+        return res.send({ error: error });
     }
-}
+});
 
 app.listen(5001, () => {
     console.log("Server on");
