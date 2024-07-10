@@ -1,5 +1,0 @@
-npm install mongodb
-
-mongodb+srv://kacperczech13:<password>@fixpaw.dmszyc6.mongodb.net/?retryWrites=true&w=majority&appName=FixPaw
-
-mongodb+srv://kacperczech13:<password>@fixpaw.dmszyc6.mongodb.net/
